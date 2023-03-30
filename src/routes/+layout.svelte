@@ -41,34 +41,13 @@
 		// @ts-ignore
 		$isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 	});
-	let alreadyKnow = writable('notif_relog', false);
 </script>
 
 <!-- See This: https://svelte-french-toast.vercel.app/ -->
 <main class="md:w-[465px] mx-auto">
 	<Toaster />
 	<App theme="ios">
-		{#if $alreadyKnow}
 			<slot />
-		{:else}
-			<Page>
-				<Block strongIos>
-					<p>Keamanan sistem telah diperbarui. Silakan login ulang. Untuk mereset semua sistem.</p>
-				</Block>
-				<Block strongIos>
-					<p>Serta File file signature sebelumnya juga tidak akan berguna.</p>
-				</Block>
-				<Block strongIos>
-					<p>Silakan diinfokan ke teman teman yang menggunakan AmikomTwo</p>
-					<p>Terima Kasih</p>
-				</Block>
-				<Button
-					largeIos
-					onClick={() => {
-						$alreadyKnow = true;
-					}}>Baik, Mengerti</Button
-				>
-			</Page>
-		{/if}
+		
 	</App>
 </main>

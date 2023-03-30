@@ -1,7 +1,7 @@
 import { MikomOneDevice } from '@binsarjr/apiamikomone'
 import type { RequestHandler } from '@sveltejs/kit'
 
-import crypto from 'crypto'
+// import crypto from 'crypto'
 export const GET: RequestHandler = async ({ url, setHeaders }) => {
 	const access_token = url.searchParams.get('access_token')?.toString() || '';
 	const apikey = url.searchParams.get('api_key')?.toString() || '';
@@ -9,7 +9,7 @@ export const GET: RequestHandler = async ({ url, setHeaders }) => {
 	const tahunAkademik = url.searchParams.get('tahun_akademik')?.toString() || '';
 
 	const response = await MikomOneDevice.Presence.All(access_token, apikey, semester, tahunAkademik);
-	const etag = crypto.createHash('md5').update(JSON.stringify(response)).digest('hex')
+	// const etag = crypto.createHash('md5').update(JSON.stringify(response)).digest('hex')
 	setHeaders({
 		// satu bulan
 		'cache-control': 'public,max-age=60'

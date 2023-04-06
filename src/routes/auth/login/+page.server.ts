@@ -9,17 +9,18 @@ export const actions: Actions = {
 		const password = formData.get('password') as string;
 		try {
 			const response = await authAttempt(nim, password);
-			throw redirect(303, '/onedevice');
-
+			
+/*
 			return {
 				location: '/onedevice',
 				success: 'Login Berhasil!',
 				response,
 				nim,
 				password: encPassword(password)
-			};
+			};*/
 		} catch (e) {
 			return fail(422, { message: 'NIM dan Password Tidak Valid!' });
 		}
+		throw redirect(303, '/onedevice');
 	}
 };

@@ -23,7 +23,7 @@
 				$preferences.nim = data.nim;
 				$preferences.password = data.password;
 				$preferences.otp = '';
-				invalidate('/onedevice')
+				invalidate('/onedevice');
 			}
 		});
 </script>

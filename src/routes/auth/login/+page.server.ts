@@ -1,6 +1,6 @@
-import { fail, redirect } from '@sveltejs/kit';
-import { authAttempt, encPassword } from '../../../lib/supports/auth';
-import type { Actions } from './$types';
+import { fail } from '@sveltejs/kit'
+import { authAttempt, encPassword } from '../../../lib/supports/auth'
+import type { Actions } from './$types'
 
 export const actions: Actions = {
 	default: async ({ request }) => {
@@ -9,7 +9,6 @@ export const actions: Actions = {
 		const password = formData.get('password') as string;
 		try {
 			const response = await authAttempt(nim, password);
-			
 
 			return {
 				location: '/onedevice',
@@ -21,6 +20,6 @@ export const actions: Actions = {
 		} catch (e) {
 			return fail(422, { message: 'NIM dan Password Tidak Valid!' });
 		}
-		throw redirect(303, '/onedevice');
+		// throw redirect(303, '/onedevice');
 	}
 };

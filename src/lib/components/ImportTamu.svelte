@@ -5,8 +5,7 @@
 	let files: FileList;
 
 	const onChange = () => {
-
-		const id = toast.loading("Memverifikasi")
+		const id = toast.loading('Memverifikasi');
 		for (const file of files) {
 			file.text().then(async (rawcontent) => {
 				const formdata = new FormData();
@@ -19,7 +18,7 @@
 				if (r.status == 200) {
 					const user: UserGuest = await r.json();
 
-					toast.success('User ('+user.nim+') berhasil diimport');
+					toast.success('User (' + user.nim + ') berhasil diimport');
 
 					$usersGuest = $usersGuest.filter((guest) => guest.nim != user.nim);
 					$usersGuest[$usersGuest.length] = user;
@@ -28,7 +27,7 @@
 				}
 			});
 		}
-		toast.success("Verifikasi selesai", {id})
+		toast.success('Verifikasi selesai', { id });
 	};
 </script>
 

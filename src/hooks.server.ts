@@ -4,7 +4,7 @@
 
 // const etagHandler: Handle = async ({ event, resolve }) => {
 // 	const response = await resolve(event);
-	
+
 // 	const etagvalue = etag(await response.text());
 // 	response.headers.set('ETag', etagvalue);
 

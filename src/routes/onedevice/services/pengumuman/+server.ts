@@ -1,8 +1,8 @@
-import { MikomOneDevice } from '@binsarjr/apiamikomone'
-import { json, type RequestHandler } from '@sveltejs/kit'
+import { MikomOneDevice } from '@binsarjr/apiamikomone';
+import { json, type RequestHandler } from '@sveltejs/kit';
 // import crypto from 'crypto'
 
-export const GET: RequestHandler = async ({ url ,setHeaders}) => {
+export const GET: RequestHandler = async ({ url, setHeaders }) => {
 	const access_token = url.searchParams.get('access_token')?.toString() || '';
 
 	const response = await MikomOneDevice.Pengumuman(access_token);
@@ -11,6 +11,6 @@ export const GET: RequestHandler = async ({ url ,setHeaders}) => {
 		// 'ETag': etag,
 		// satu bulan
 		'cache-control': 'public,max-age=3600'
-	})
+	});
 	return json(response.results);
 };

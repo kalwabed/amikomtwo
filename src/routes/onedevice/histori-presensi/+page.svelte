@@ -12,9 +12,16 @@
 	let tahunAkademikSelected: string = '';
 	const refresh = async () => {
 		const id = toast.loading('sync', { position: 'top-right' });
-		const cacheSatuBulan = !(semesterSelected == $mahasiswa?.PeriodeAkademik.Semester && tahunAkademikSelected == $mahasiswa.PeriodeAkademik.TahunAkademik)
+		const cacheSatuBulan = !(
+			semesterSelected == $mahasiswa?.PeriodeAkademik.Semester &&
+			tahunAkademikSelected == $mahasiswa.PeriodeAkademik.TahunAkademik
+		);
 
-		$historiPresensi = await serviceClient.historiPresensi(semesterSelected, tahunAkademikSelected, cacheSatuBulan);
+		$historiPresensi = await serviceClient.historiPresensi(
+			semesterSelected,
+			tahunAkademikSelected,
+			cacheSatuBulan
+		);
 		toast.success('selesai', { id, position: 'top-right' });
 	};
 	onMount(async () => {

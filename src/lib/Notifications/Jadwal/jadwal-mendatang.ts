@@ -1,7 +1,6 @@
-import { findJadwalSebelumWaktu } from '../../supports/utils'
+import { findJadwalSebelumWaktu } from '../../supports/utils';
 
 addEventListener('message', (event) => {
-
 	let id = '';
 	setInterval(() => {
 		// ambil jadwal mendatang 30 menit sebelumnya

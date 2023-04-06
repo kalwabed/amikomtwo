@@ -20,5 +20,5 @@
 	</Navbar>
 	<BlockTitle>List Tamu</BlockTitle>
 	<ImportTamu />
-	<ListTamu  active={true}/>
+	<ListTamu active={true} />
 </Page>

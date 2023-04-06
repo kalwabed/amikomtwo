@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores'
+	import { page } from '$app/stores';
 	import { jadwal } from './../../stores/jadwal';
 	import { browser } from '$app/environment';
 	import Worker from './jadwal-berlangsung?worker';
@@ -13,15 +13,14 @@
 			jadwalWorker.terminate();
 		}
 		jadwalWorker = new Worker();
-        jadwalWorker.addEventListener('message', (event) => {
-				Push.create(event.data.title, {
-					icon: '/favicon.png',
-					body: event.data.body,
-					tag: 'jadwal-berlangsung',
-					silent: true,
-					requireInteraction: true,
-                   
-				});
+		jadwalWorker.addEventListener('message', (event) => {
+			Push.create(event.data.title, {
+				icon: '/favicon.png',
+				body: event.data.body,
+				tag: 'jadwal-berlangsung',
+				silent: true,
+				requireInteraction: true
+			});
 		});
 		jadwalWorker.postMessage($jadwal);
 	}

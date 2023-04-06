@@ -47,7 +47,6 @@
 <main class="md:w-[465px] mx-auto">
 	<Toaster />
 	<App theme="ios">
-			<slot />
-		
+		<slot />
 	</App>
 </main>

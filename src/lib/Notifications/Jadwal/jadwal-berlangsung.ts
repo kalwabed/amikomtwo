@@ -1,4 +1,4 @@
-import { findJadwalBerlangsung } from '../../supports/utils'
+import { findJadwalBerlangsung } from '../../supports/utils';
 
 addEventListener('message', (event) => {
 	let id = '';

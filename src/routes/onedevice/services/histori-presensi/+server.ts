@@ -1,5 +1,5 @@
-import { MikomOneDevice } from '@binsarjr/apiamikomone'
-import type { RequestHandler } from '@sveltejs/kit'
+import { MikomOneDevice } from '@binsarjr/apiamikomone';
+import type { RequestHandler } from '@sveltejs/kit';
 
 // import crypto from 'crypto'
 export const GET: RequestHandler = async ({ url, setHeaders }) => {
@@ -14,6 +14,6 @@ export const GET: RequestHandler = async ({ url, setHeaders }) => {
 		// satu bulan
 		'cache-control': 'public,max-age=60'
 		// 'cache-control': 'public,max-age=3600'
-	})
+	});
 	return new Response(JSON.stringify(response));
 };

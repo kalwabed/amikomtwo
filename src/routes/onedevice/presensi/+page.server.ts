@@ -1,8 +1,7 @@
-import { MikomOneDevice } from '@binsarjr/apiamikomone'
-import { PresenceStatus } from '@binsarjr/apiamikomone/lib/typings/Enum/Presence'
-import { fail } from '@sveltejs/kit'
-import type { Actions } from './$types'
-
+import { MikomOneDevice } from '@binsarjr/apiamikomone';
+import { PresenceStatus } from '@binsarjr/apiamikomone/lib/typings/Enum/Presence';
+import { fail } from '@sveltejs/kit';
+import type { Actions } from './$types';
 
 export const actions: Actions = {
 	// qrcode: async ({ request }) => {

@@ -18,7 +18,6 @@
 
 	import JadwalMendatangServiceWorker from '../../lib/Notifications/Jadwal/JadwalMendatangServiceWorker.svelte';
 
-
 	$: if (browser && !$authUser?.accessToken) {
 		// clean data when user logout
 		$mahasiswa = null;
@@ -61,6 +60,7 @@
 		profile: '/onedevice/profile'
 	};
 </script>
+
 <JadwalBerlangsungServiceWorker />
 <JadwalMendatangServiceWorker />
 

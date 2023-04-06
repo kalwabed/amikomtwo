@@ -1,6 +1,6 @@
-import { fail, redirect } from '@sveltejs/kit'
-import { authAttempt, encPassword } from '../../../lib/supports/auth'
-import type { Actions } from './$types'
+import { fail, redirect } from '@sveltejs/kit';
+import { authAttempt, encPassword } from '../../../lib/supports/auth';
+import type { Actions } from './$types';
 
 export const actions: Actions = {
 	default: async ({ request }) => {
@@ -9,7 +9,7 @@ export const actions: Actions = {
 		const password = formData.get('password') as string;
 		try {
 			const response = await authAttempt(nim, password);
-			throw redirect(303, '/onedevice')
+			throw redirect(303, '/onedevice');
 
 			return {
 				location: '/onedevice',

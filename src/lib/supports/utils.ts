@@ -1,5 +1,5 @@
-import type { IJadwalKuliah } from '@binsarjr/apiamikomone/lib/typings/Response'
-import moment from 'moment'
+import type { IJadwalKuliah } from '@binsarjr/apiamikomone/lib/typings/Response';
+import moment from 'moment';
 
 /**
  * Membuat sebuah fungsi yang dapat membuat pemanggilnya tertunda selama waktu
@@ -22,10 +22,7 @@ export const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve
 export const randomBetween = (min: number, max: number) =>
 	Math.floor(Math.random() * (max - min + 1) + min);
 
-
-export const findJadwalBerlangsung = (
-	jadwal: IJadwalKuliah[],
-) => {
+export const findJadwalBerlangsung = (jadwal: IJadwalKuliah[]) => {
 	return jadwal.find((jadwal) => {
 		const now = new Date();
 		if (jadwal.IdHari != now.getDay()) return false;
@@ -46,7 +43,7 @@ export const findJadwalBerlangsung = (
 		timeEnd.set('minutes', selesai.split(':')[1]);
 		timeEnd.set('seconds', 0);
 
-		if (moment().isBetween(timeStart,timeEnd)) {
+		if (moment().isBetween(timeStart, timeEnd)) {
 			return jadwal;
 		}
 	});
@@ -72,9 +69,8 @@ export const findJadwalSebelumWaktu = (
 
 		const diff = timeStart.diff(moment(), type);
 		if (diff > 0 && diff <= unit) {
-
 			return jadwal;
 		}
-    return false;
+		return false;
 	});
 };

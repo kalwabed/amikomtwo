@@ -1,6 +1,6 @@
-import { MikomOneDevice } from '@binsarjr/apiamikomone'
-import { fail, redirect, type Actions } from '@sveltejs/kit'
-import { createDeviceIdFromNpm } from '../../../lib/supports/device_is'
+import { MikomOneDevice } from '@binsarjr/apiamikomone';
+import { fail, redirect, type Actions } from '@sveltejs/kit';
+import { createDeviceIdFromNpm } from '../../../lib/supports/device_is';
 
 export const actions: Actions = {
 	verify: async ({ request }) => {
@@ -18,7 +18,7 @@ export const actions: Actions = {
 		} catch (_) {
 			return fail(422, { message: 'OTP Tidak valid.' });
 		}
-			throw redirect(303,'/auth/login')
+		throw redirect(303, '/auth/login');
 	},
 	resend: async ({ request }) => {
 		const formData = await request.formData();

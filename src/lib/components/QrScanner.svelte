@@ -15,7 +15,7 @@
 	let controls: IScannerControls | null = null;
 	let video: HTMLVideoElement;
 
-	let isCameraAvailable=true
+	let isCameraAvailable = true;
 
 	let min = 1;
 	let max = 10;
@@ -45,16 +45,18 @@
 		await navigator?.mediaDevices
 			?.getUserMedia({
 				video: {
-					deviceId: $selectedDeviceId||undefined,
+					deviceId: $selectedDeviceId || undefined,
 					facingMode: {
 						exact: 'environment'
 					}
 				}
 			})
 			.catch(() => {
-				if(isCameraAvailable) isCameraAvailable=false
-				else return
-			toast.error('Kamera belakang tidak tersedia. Pastikan device ada dan telah diizinkan. Abaikan jika kamu menggunakan kamera depan')
+				if (isCameraAvailable) isCameraAvailable = false;
+				else return;
+				toast.error(
+					'Kamera belakang tidak tersedia. Pastikan device ada dan telah diizinkan. Abaikan jika kamu menggunakan kamera depan'
+				);
 			});
 
 		videoInputDevices = await BrowserMultiFormatReader.listVideoInputDevices();

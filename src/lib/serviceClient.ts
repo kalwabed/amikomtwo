@@ -7,17 +7,17 @@ import type {
 	ITranskripNilai,
 	InitKHS,
 	Pengumuman
-} from '@binsarjr/apiamikomone/lib/typings/Response'
-import moment from 'moment'
-import toast from 'svelte-french-toast'
-import { get } from 'svelte/store'
-import { hasilStudiSemester, pengumuman, transkripNilai } from './stores/akademik'
-import { initKhs } from './stores/initKhs'
-import { jadwal } from './stores/jadwal'
-import { ktmDigital } from './stores/ktmDigital'
-import { mahasiswa } from './stores/mahasiswa'
-import { listBank } from './stores/pembayaran'
-import { authUser, preferences } from './stores/preferences'
+} from '@binsarjr/apiamikomone/lib/typings/Response';
+import moment from 'moment';
+import toast from 'svelte-french-toast';
+import { get } from 'svelte/store';
+import { hasilStudiSemester, pengumuman, transkripNilai } from './stores/akademik';
+import { initKhs } from './stores/initKhs';
+import { jadwal } from './stores/jadwal';
+import { ktmDigital } from './stores/ktmDigital';
+import { mahasiswa } from './stores/mahasiswa';
+import { listBank } from './stores/pembayaran';
+import { authUser, preferences } from './stores/preferences';
 /**
  * Mendapatkan response dari service dengan menggunakan data dari user yang
  * telah login.
@@ -57,9 +57,9 @@ export const serviceClient = {
 			body: formdata
 		});
 		const response = await r.json();
-		if(r.status.toString().startsWith('5')) {
-			console.error(r)
-			throw new Error("Ada error dari server. kemungkinan server down")
+		if (r.status.toString().startsWith('5')) {
+			console.error(r);
+			throw new Error('Ada error dari server. kemungkinan server down');
 		}
 		if (r.status == 200) {
 			authUser.update(() => ({

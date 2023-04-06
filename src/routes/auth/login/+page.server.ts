@@ -10,14 +10,14 @@ export const actions: Actions = {
 		try {
 			const response = await authAttempt(nim, password);
 			
-/*
+
 			return {
 				location: '/onedevice',
 				success: 'Login Berhasil!',
 				response,
 				nim,
 				password: encPassword(password)
-			};*/
+			};
 		} catch (e) {
 			return fail(422, { message: 'NIM dan Password Tidak Valid!' });
 		}

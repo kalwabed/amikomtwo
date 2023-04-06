@@ -1,6 +1,6 @@
-import { applyAction } from '$app/forms';
-import { goto } from '$app/navigation';
-import toast from 'svelte-french-toast';
+import { applyAction } from '$app/forms'
+import { goto } from '$app/navigation'
+import toast from 'svelte-french-toast'
 export const myenhance =
 	<Data = any>({
 		done,
@@ -30,6 +30,7 @@ export const myenhance =
 						done();
 					});
 				await applyAction(result);
+			toast.remove()
 			}
 		};
 	};

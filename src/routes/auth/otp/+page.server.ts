@@ -1,6 +1,6 @@
-import { MikomOneDevice } from '@binsarjr/apiamikomone';
-import { error, type Actions } from '@sveltejs/kit';
-import { createDeviceIdFromNpm, generateDeviceId } from '../../../lib/supports/device_is';
+import { MikomOneDevice } from '@binsarjr/apiamikomone'
+import { fail, redirect, type Actions } from '@sveltejs/kit'
+import { createDeviceIdFromNpm } from '../../../lib/supports/device_is'
 
 export const actions: Actions = {
 	verify: async ({ request }) => {
@@ -11,13 +11,14 @@ export const actions: Actions = {
 
 		try {
 			await MikomOneDevice.Device.Verify(nim, otp, device_id);
-			return {
-				location: 'login',
-				success: 'OTP VAlid.'
-			};
+			// return {
+			// 	location: 'login',
+			// 	success: 'OTP VAlid.'
+			// };
 		} catch (_) {
-			return error(422, { message: 'OTP Tidak valid.' });
+			return fail(422, { message: 'OTP Tidak valid.' });
 		}
+			throw redirect(303,'/auth/login')
 	},
 	resend: async ({ request }) => {
 		const formData = await request.formData();
@@ -29,7 +30,7 @@ export const actions: Actions = {
 				success: 'OTP Telah Dikirimkan.'
 			};
 		} catch (_) {
-			return error(422, {
+			return fail(422, {
 				message: 'NIM & Tanggal Lahir anda tidak valid.\nGagal Mengirimkan OTP'
 			});
 		}

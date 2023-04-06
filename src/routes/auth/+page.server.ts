@@ -1,5 +1,5 @@
-import { error, redirect, type Actions } from '@sveltejs/kit';
-import { MikomOneDevice } from '@binsarjr/apiamikomone';
+import { MikomOneDevice } from '@binsarjr/apiamikomone'
+import { fail, redirect, type Actions } from '@sveltejs/kit'
 
 export const actions: Actions = {
 	default: async ({ request }) => {
@@ -8,12 +8,13 @@ export const actions: Actions = {
 		const tanggalLahir = formData.get('tanggal_lahir') as string;
 		try {
 			await MikomOneDevice.Device.Otp(nim, tanggalLahir);
-			return {
-				location: '/auth/otp',
-				success: 'Data telah tervalidasi. Selanjutnya Meminta OTP'
-			};
+			// return {
+			// 	location: '/auth/otp',
+			// 	success: 'Data telah tervalidasi. Selanjutnya Meminta OTP'
+			// };
 		} catch (_) {
-			return error(422, { message: 'Cek NIM & Tanggal Lahir mu kembali' });
+return fail(422, { message: 'Cek NIM & Tanggal Lahir mu kembali' });
 		}
+			throw redirect(303,'/auth/otp')
 	}
 };

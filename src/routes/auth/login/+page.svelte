@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { invalidate } from '$app/navigation';
 	import { myenhance } from '$lib/forms/myenhance';
 	import { authUser, preferences } from '$lib/stores/preferences';
 	import { List, ListButton, ListInput, Navbar, Page } from 'konsta/svelte';
@@ -22,6 +23,7 @@
 				$preferences.nim = data.nim;
 				$preferences.password = data.password;
 				$preferences.otp = '';
+				invalidate('/onedevice')
 			}
 		});
 </script>

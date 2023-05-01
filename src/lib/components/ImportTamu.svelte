@@ -31,7 +31,7 @@
 	};
 </script>
 
-<Block insetIos>
+<Block>
 	<input
 		type="file"
 		bind:files

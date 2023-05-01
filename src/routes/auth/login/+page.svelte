@@ -3,7 +3,7 @@
 	import { invalidate } from '$app/navigation';
 	import { myenhance } from '$lib/forms/myenhance';
 	import { authUser, preferences } from '$lib/stores/preferences';
-	import { List, ListButton, ListInput, Navbar, Page } from 'konsta/svelte';
+	import { Block, Button, List, ListButton, ListInput, Navbar, Page } from 'konsta/svelte';
 	const doLogin = () =>
 		myenhance<{
 			password: string;
@@ -49,7 +49,9 @@
 				required
 				placeholder="Password Akun Mahasiswa"
 			/>
-			<ListButton largeIos>Masuk</ListButton>
 		</List>
+		<Block insertIos>
+			<Button largeIos>Masuk</Button>
+		</Block>
 	</form>
 </Page>

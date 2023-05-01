@@ -1,6 +1,6 @@
 <script>
 	import { enhance, applyAction } from '$app/forms';
-	import { Block, List, ListButton, ListInput, Navbar, Page } from 'konsta/svelte';
+	import { Block, Button, List, ListButton, ListInput, Navbar, Page } from 'konsta/svelte';
 	import { myenhance } from '$lib/forms/myenhance';
 	import { preferences } from '$lib/stores/preferences';
 </script>
@@ -33,7 +33,9 @@
 				type="date"
 				placeholder="Silakan Pilih Tanggal Lahir"
 			/>
-			<ListButton>Validasi NIM & Tanggal Lahir</ListButton>
 		</List>
+		<Block insertIos>
+			<Button largeIos>Validasi NIM & Tanggal Lahir</Button>
+		</Block>
 	</form>
 </Page>

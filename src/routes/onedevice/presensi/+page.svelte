@@ -12,7 +12,7 @@
 	import ListTamu from '../../../lib/components/TamuComponent/ListTamu.svelte';
 	import QrScanner from '../../../lib/components/QrScanner.svelte';
 	import { sleep } from '../../../lib/supports/utils';
-	import { getIdFromJadwal, jadwalMatkulAktif } from '$lib/stores/jadwal';
+	import { getIdFromJadwal, jadwalHariIni, jadwalMatkulAktif } from '$lib/stores/jadwal';
 	import { mahasiswa } from '../../../lib/stores/mahasiswa';
 
 	let qrImages: FileList | null;
@@ -23,17 +23,21 @@
 	let except = [$usersGuest.find((guest) => $mahasiswa?.Mhs?.Npm == guest.nim) as UserGuest];
 	$: if ($usersGuestStatus) {
 		Object.entries($usersGuestStatus).map(([key, value]) => {
-			Object.entries(value).map(([nim, isActive]) => {
-				const user = $usersGuest.find((guest) => guest.nim === nim);
-				if (user) {
-					if (isActive) {
-						except = except.filter((g) => g.nim != nim);
-					} else {
-						const index = except.findIndex((guest) => guest?.nim == nim);
-						except[except[index] ? index : except.length] = user;
-					}
+			if ($jadwalMatkulAktif) {
+				if (key == getIdFromJadwal($jadwalMatkulAktif)) {
+					Object.entries(value).map(([nim, isActive]) => {
+						const user = $usersGuest.find((guest) => guest.nim === nim);
+						if (user) {
+							if (isActive) {
+								except = except.filter((g) => g.nim != nim);
+							} else {
+								const index = except.findIndex((guest) => guest?.nim == nim);
+								except[except[index] ? index : except.length] = user;
+							}
+						}
+					});
 				}
-			});
+			}
 		});
 	}
 

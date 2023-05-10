@@ -15,13 +15,17 @@
 	} from 'konsta/svelte';
 	import { onMount } from 'svelte';
 	import { jadwal } from '../../../lib/stores/jadwal';
+	import HorizontalScrollContent from '../../../lib/components/HorizontalScrollContent.svelte';
+	import { fade } from 'svelte/transition';
 	const todayId = new Date().getDay();
 	let idHariSelected = todayId.toString();
 	let jadwalSelected: IJadwalKuliah[] = [];
+
 	const getJadwal = async () => {
 		let idHari = parseInt(idHariSelected);
 		jadwalSelected = $jadwal.filter((jadwal) => jadwal.IdHari == idHari);
 	};
+	$: if (idHariSelected) getJadwal();
 	onMount(() => {
 		getJadwal();
 	});
@@ -32,20 +36,25 @@
 		<NavbarBackLink slot="left" text="Back" href="/onedevice" component="a" />
 	</Navbar>
 	<Block>
-		<select
-			bind:value={idHariSelected}
-			on:change={getJadwal}
-			class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-		>
-			<option value="1">Senin</option>
-			<option value="2">Selasa</option>
-			<option value="3">Rabu</option>
-			<option value="4">Kamis</option>
-			<option value="5">Jum'at</option>
-			<option value="6">Sabtu</option>
-			<option value="7">Minggu</option>
-		</select>
+		<HorizontalScrollContent>
+			<div class="flex overflow-hidden gap-2">
+				{#each ['Senin', 'Selasa', 'Rabu', 'Kamis', "Jum'at", 'Sabtu', 'Minggu'] as hari, i}
+					{@const idHari = i + 1}
+					<button
+						type="button"
+						class="px-8 py-4 rounded-lg border"
+						on:click={() => {
+							idHariSelected = idHari.toString();
+						}}
+						class:bg-white={idHariSelected != idHari.toString()}
+						class:bg-primary={idHariSelected == idHari.toString()}
+						class:text-white={idHariSelected == idHari.toString()}>{hari}</button
+					>
+				{/each}
+			</div>
+		</HorizontalScrollContent>
 	</Block>
+
 	<BlockTitle>Jadwal Kuliah</BlockTitle>
 	<List strongIos insetIos outlineIos>
 		{#each jadwalSelected as jadwal}

@@ -64,8 +64,16 @@
 				subtitle={jadwal.Ruang + ' | ' + jadwal.Waktu}
 				text={jadwal.EmailDosen}
 				after={jadwal.Kode}
-				footer={jadwal.NamaDosen}
-			/>
+			>
+				<svelte:fragment slot="footer">
+					<div class="mt-2 mb-4">
+						<p>{jadwal.NamaDosen}</p>
+						<a href={jadwal.ZoomURL} target="_blank" rel="noreferrer" class="text-blue-600"
+							>{jadwal.ZoomURL}</a
+						>
+					</div>
+				</svelte:fragment>
+			</ListItem>
 		{:else}
 			<ListItem title="Tidak ada jadwal" />
 		{/each}

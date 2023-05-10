@@ -15,15 +15,21 @@
 
 <BlockTitle>Jadwal Kuliah Hari Ini</BlockTitle>
 <List strongIos insetIos outlineIos>
-	{#each $jadwalHariIni as {Keterangan, MataKuliah, JenisKuliah, Waktu, Ruang, EmailDosen,  Kode,NamaDosen}}
+	{#each $jadwalHariIni as {Keterangan, MataKuliah, JenisKuliah, Waktu, Ruang, EmailDosen,  Kode,NamaDosen,ZoomURL}}
 		<ListItem
 			title={MataKuliah}
 			header={JenisKuliah + (!!Keterangan ? ' (' + Keterangan + ')' : '')}
 			subtitle={Ruang + ' | ' + Waktu}
 			text={EmailDosen}
 			after={Kode}
-			footer={NamaDosen}
-		/>
+		>
+		<svelte:fragment slot="footer">
+		<div class="mt-2 mb-4">
+			<p>{NamaDosen}</p>
+		<a href="{ZoomURL}" target="_blank" rel="noreferrer" class="text-blue-600">{ZoomURL}</a>
+		</div>
+		</svelte:fragment>
+	</ListItem>
 	{:else}
 		<ListItem title="Tidak ada jadwal" />
 	{/each}

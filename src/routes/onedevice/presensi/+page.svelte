@@ -13,34 +13,24 @@
 	import QrScanner from '../../../lib/components/QrScanner.svelte';
 	import { sleep } from '../../../lib/supports/utils';
 	import { getIdFromJadwal, jadwalMatkulAktif } from '$lib/stores/jadwal';
+	import { mahasiswa } from '../../../lib/stores/mahasiswa';
 
 	let qrImages: FileList | null;
 	let qrresult: string | null;
 	let imageUrl: string;
 	let code = '';
 	let activeUsersGuest: UserGuest[] = $usersGuest;
-	let except = [$usersGuest.find((guest) => $preferences.nim == guest.nim) as UserGuest];
-	$: except = except.filter(Boolean);
-	$: activeUsersGuest = activeUsersGuest.filter(Boolean);
-	$: {
+	let except = [$usersGuest.find((guest) => $mahasiswa?.Mhs?.Npm == guest.nim) as UserGuest];
+	$: if ($usersGuestStatus) {
 		Object.entries($usersGuestStatus).map(([key, value]) => {
 			Object.entries(value).map(([nim, isActive]) => {
 				const user = $usersGuest.find((guest) => guest.nim === nim);
 				if (user) {
 					if (isActive) {
-						const index = activeUsersGuest.findIndex((guest) => guest?.nim === nim);
-						if (activeUsersGuest[index]) {
-							activeUsersGuest[index] = user;
-						} else {
-							activeUsersGuest[activeUsersGuest.length] = user;
-						}
+						except = except.filter((g) => g.nim != nim);
 					} else {
 						const index = except.findIndex((guest) => guest?.nim == nim);
-						if (except[index]) {
-							except[index] = user;
-						} else {
-							except[except.length] = user;
-						}
+						except[except[index] ? index : except.length] = user
 					}
 				}
 			});
@@ -124,18 +114,15 @@
 
 			const index = except.findIndex((g) => g?.nim === e.detail.nim);
 			except[except[index] ? index : except.length] = e.detail;
-			activeUsersGuest = activeUsersGuest.filter((g) => g.nim !== e.detail.nim);
 		}
 	};
 
 	const active = (e: CustomEvent<UserGuest>) => {
-		if ($jadwalMatkulAktif) {
+		if ($jadwalMatkulAktif && $mahasiswa?.Mhs?.Npm !== e.detail.nim) {
 			const id = getIdFromJadwal($jadwalMatkulAktif);
 			if (!$usersGuestStatus[id]) $usersGuestStatus[id] = {};
 			$usersGuestStatus[id][e.detail.nim] = true;
 
-			const index = activeUsersGuest.findIndex((g) => g?.nim === e.detail.nim);
-			activeUsersGuest[activeUsersGuest[index] ? index : activeUsersGuest.length] = e.detail;
 			except = except.filter((g) => g.nim !== e.detail.nim);
 		}
 	};

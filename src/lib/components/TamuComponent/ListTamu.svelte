@@ -4,30 +4,30 @@
 	import { usersGuest, type UserGuest } from '../../stores/userguest';
 	import { createEventDispatcher } from 'svelte';
 	export let active = false;
-	export let activeSources: UserGuest[] = [];
+	export let guests: UserGuest[] = [];
 	export let except: UserGuest[] = [];
 
 	const dispatch = createEventDispatcher()
 
 	$: if ($usersGuest) {
-		activeSources = $usersGuest;
+		guests = $usersGuest;
 	}
 
-	$: activeSources = activeSources.filter((source) => !except.includes(source));
+	$: guests = guests.filter((guest) => !except.includes(guest));
 	afterNavigate(() => {
-		activeSources = activeSources.filter((source) => !except.includes(source));
+		guests = guests.filter((guest) => !except.includes(guest));
 	});
 
 	let checkboxs: boolean[] = [];
-	const onClick = (indexSource: number) => {
+	const onClick = (indexGuest: number) => {
 		if (!active) return;
-		checkboxs[indexSource] = !checkboxs[indexSource];
-		if (activeSources.includes($usersGuest[indexSource])) {
-			activeSources = activeSources.filter((source) => source != $usersGuest[indexSource]);
-			dispatch('deactive', $usersGuest[indexSource])
+		checkboxs[indexGuest] = !checkboxs[indexGuest];
+		if (guests.includes($usersGuest[indexGuest])) {
+			guests = guests.filter((guest) => guest != $usersGuest[indexGuest]);
+			dispatch('deactive', $usersGuest[indexGuest])
 		} else {
-			activeSources[activeSources.length] = $usersGuest[indexSource];
-			dispatch('active', $usersGuest[indexSource])
+			guests[guests.length] = $usersGuest[indexGuest];
+			dispatch('active', $usersGuest[indexGuest])
 
 		}
 	};
@@ -39,7 +39,7 @@
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<div
 				class:cursor-pointer={active}
-				class:opacity-50={!activeSources.includes(guest)}
+				class:opacity-50={!guests.includes(guest)}
 				on:click={() => onClick(i)}
 				class="flex-grow"
 			>

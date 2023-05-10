@@ -22,7 +22,7 @@
 	let qrresult: string | null;
 	let imageUrl: string;
 	let code = '';
-	let activeUsersGuest: UserGuest[] = $usersGuest;
+	let guests: UserGuest[] = $usersGuest;
 	$: if (qrresult) {
 		//   need time for reactive
 		setTimeout(() => {
@@ -48,7 +48,7 @@
 		const id = toast.loading('Mohon Menunggu...');
 		const formdata = new FormData();
 		formdata.set('code', code);
-		activeUsersGuest.map((user) => {
+		guests.map((user) => {
 			formdata.append('nim', user.nim);
 			formdata.append('password', user.password || '');
 		});
@@ -68,7 +68,7 @@
 		const id = toast.loading('Mohon Menunggu...');
 		const formdata = new FormData();
 		formdata.set('data', qrresult || '');
-		activeUsersGuest.map((user) => {
+		guests.map((user) => {
 			formdata.append('nim', user.nim);
 			formdata.append('password', user.password || '');
 		});
@@ -132,5 +132,5 @@
 	<BlockTitle>Presensi Bareng</BlockTitle>
 	<Block>Presensi akan berbarengan dengan guest tamu yang ada</Block>
 	<ImportTamu />
-	<ListTamu active bind:activeSources={activeUsersGuest} />
+	<ListTamu active bind:guests />
 </Page>

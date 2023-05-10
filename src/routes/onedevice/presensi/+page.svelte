@@ -19,7 +19,7 @@
 	let qrresult: string | null;
 	let imageUrl: string;
 	let code = '';
-	let activeUsersGuest: UserGuest[] = $usersGuest;
+	let guests: UserGuest[] = $usersGuest;
 	let except = [$usersGuest.find((guest) => $mahasiswa?.Mhs?.Npm == guest.nim) as UserGuest];
 	$: if ($usersGuestStatus) {
 		Object.entries($usersGuestStatus).map(([key, value]) => {
@@ -30,7 +30,7 @@
 						except = except.filter((g) => g.nim != nim);
 					} else {
 						const index = except.findIndex((guest) => guest?.nim == nim);
-						except[except[index] ? index : except.length] = user
+						except[except[index] ? index : except.length] = user;
 					}
 				}
 			});
@@ -62,7 +62,8 @@
 		const id = toast.loading('Mohon Menunggu...');
 		const formdata = new FormData();
 		formdata.set('code', code);
-		activeUsersGuest.map((user) => {
+		guests.map((user) => {
+			if (except.includes(user)) return;
 			formdata.append('nim', user.nim);
 			formdata.append('password', user.password || '');
 		});
@@ -87,7 +88,8 @@
 		formdata.append('password', $preferences.password);
 
 		// guest account
-		activeUsersGuest.map((user) => {
+		guests.map((user) => {
+			if (except.includes(user)) return;
 			formdata.append('nim', user.nim);
 			formdata.append('password', user.password || '');
 		});
@@ -174,10 +176,4 @@
 
 <BlockTitle>Presensi Bareng</BlockTitle>
 <Block>saat ini presensi akan berbarengan dengan guest tamu yang ada</Block>
-<ListTamu
-	on:deactive={deactive}
-	on:active={active}
-	active
-	bind:activeSources={activeUsersGuest}
-	bind:except
-/>
+<ListTamu on:deactive={deactive} on:active={active} active bind:guests bind:except />

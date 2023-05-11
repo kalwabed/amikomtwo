@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	export let draggable = true;
 	export let wheel = false;
+	
 	let slider;
 
 	onMount(() => {
@@ -79,6 +80,7 @@
 		float: left;
 		-ms-overflow-style: none; /* IE and Edge */
 		scrollbar-width: none;
+		scroll-snap-type: x mandatory;
 	}
 	.parent::-webkit-scrollbar {
 		display: none;
@@ -87,6 +89,7 @@
 	.child {
 		float: left;
 		cursor: pointer;
+		/* scroll-snap-align: center; */
 	}
 	.clear {
 		clear: both;

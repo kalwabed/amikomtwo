@@ -17,6 +17,7 @@
 	import { jadwal } from '../../../lib/stores/jadwal';
 	import HorizontalScrollContent from '../../../lib/components/HorizontalScrollContent.svelte';
 	import { fade } from 'svelte/transition';
+	import { autofocus } from '../../../lib/actions/focus';
 	const todayId = new Date().getDay();
 	let idHariSelected = todayId.toString();
 	let jadwalSelected: IJadwalKuliah[] = [];
@@ -36,12 +37,13 @@
 		<NavbarBackLink slot="left" text="Back" href="/onedevice" component="a" />
 	</Navbar>
 	<Block>
-		<HorizontalScrollContent>
+		<HorizontalScrollContent wheel>
 			<div class="flex overflow-hidden gap-2">
 				{#each ['Senin', 'Selasa', 'Rabu', 'Kamis', "Jum'at", 'Sabtu', 'Minggu'] as hari, i}
 					{@const idHari = i + 1}
 					<button
 						type="button"
+						use:autofocus={idHari.toString() == idHariSelected}
 						class="px-8 py-4 rounded-lg border"
 						on:click={() => {
 							idHariSelected = idHari.toString();
@@ -54,7 +56,6 @@
 			</div>
 		</HorizontalScrollContent>
 	</Block>
-
 	<BlockTitle>Jadwal Kuliah</BlockTitle>
 	<List strongIos insetIos outlineIos>
 		{#each jadwalSelected as jadwal}
@@ -78,4 +79,5 @@
 			<ListItem title="Tidak ada jadwal" />
 		{/each}
 	</List>
+	<div class="pb-10"></div>
 </Page>

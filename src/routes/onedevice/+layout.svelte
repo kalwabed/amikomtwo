@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Push from 'push.js';
 	import { browser } from '$app/environment';
-	import { goto } from '$app/navigation';
+	import { goto, preloadCode } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { historiPembayaran } from '$lib/stores/pembayaran';
 	import { Page, Navbar, Tabbar, TabbarLink } from 'konsta/svelte';
@@ -20,6 +20,7 @@
 	import JadwalMendatangServiceWorker from '../../lib/Notifications/Jadwal/JadwalMendatangServiceWorker.svelte';
 	import { usersGuestStatus } from '../../lib/stores/userguest';
 
+	preloadCode('/onedevice/*')
 	$: if (browser && !$authUser?.accessToken) {
 		// clean data when user logout
 		$mahasiswa = null;

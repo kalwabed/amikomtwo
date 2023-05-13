@@ -7,7 +7,6 @@ export const GET: RequestHandler = async ({ params, setHeaders }) => {
 
     const response = await fetch(link)
     const headers = Object.fromEntries(response.headers)
-    console.log(headers)
 
     const lastModified: any = new Date(headers['last-modified'])
     const cacheControl = `max-age=${Math.floor((Date.now() - lastModified) / 1000)}, must-revalidate`;

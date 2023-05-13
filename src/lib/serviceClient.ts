@@ -7,17 +7,17 @@ import type {
 	ITranskripNilai,
 	InitKHS,
 	Pengumuman
-} from '@binsarjr/apiamikomone/lib/typings/Response';
-import moment from 'moment';
-import toast from 'svelte-french-toast';
-import { get } from 'svelte/store';
-import { hasilStudiSemester, pengumuman, transkripNilai } from './stores/akademik';
-import { initKhs } from './stores/initKhs';
-import { jadwal } from './stores/jadwal';
-import { ktmDigital } from './stores/ktmDigital';
-import { mahasiswa } from './stores/mahasiswa';
-import { listBank } from './stores/pembayaran';
-import { authUser, preferences } from './stores/preferences';
+} from '@binsarjr/apiamikomone/lib/typings/Response'
+import moment from 'moment'
+import toast from 'svelte-french-toast'
+import { get } from 'svelte/store'
+import { hasilStudiSemester, pengumuman, transkripNilai } from './stores/akademik'
+import { initKhs } from './stores/initKhs'
+import { jadwal } from './stores/jadwal'
+import { ktmDigital } from './stores/ktmDigital'
+import { mahasiswa } from './stores/mahasiswa'
+import { listBank } from './stores/pembayaran'
+import { authUser, preferences } from './stores/preferences'
 /**
  * Mendapatkan response dari service dengan menggunakan data dari user yang
  * telah login.
@@ -82,6 +82,7 @@ export const serviceClient = {
 	bio: async () => {
 		const r = await reqService('/onedevice/services/bio');
 		const resp: IBio = await r.json();
+		resp.Mhs.NpmImg = `/services/fotomhs/${resp.Mhs.Angkatan}/${resp.Mhs.Npm}`
 		if (r.status == 200) mahasiswa.update(() => resp);
 	},
 	/**

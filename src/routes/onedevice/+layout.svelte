@@ -20,7 +20,6 @@
 	import JadwalMendatangServiceWorker from '../../lib/Notifications/Jadwal/JadwalMendatangServiceWorker.svelte';
 	import { usersGuestStatus } from '../../lib/stores/userguest';
 
-	preloadCode('/onedevice/*')
 	$: if (browser && !$authUser?.accessToken) {
 		// clean data when user logout
 		$mahasiswa = null;
@@ -49,6 +48,7 @@
 	}
 
 	onMount(async () => {
+		preloadCode('/onedevice/*')
 		Push.Permission.request();
 
 		await serviceClient.refresh();

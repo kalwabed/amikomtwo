@@ -6,6 +6,7 @@
 	import { onDestroy, onMount } from 'svelte';
 	import toast from 'svelte-french-toast';
 	import { initKhs } from '../../../lib/stores/initKhs';
+	import PilihSemester from '../../../lib/components/PilihSemester.svelte';
 
 	let semesterSelected: number = 0;
 	let tahunAkademikSelected: string = '';
@@ -25,6 +26,9 @@
 		await serviceClient.hasilStudi(semesterSelected, tahunAkademikSelected, cache);
 		toast.success('selesai', { id, position: 'top-right' });
 	};
+	$: if (semesterSelected) {
+		refresh();
+	}
 	onMount(() => {
 		semesterSelected = $mahasiswa!.PeriodeAkademik.Semester || 0;
 		tahunAkademikSelected = $mahasiswa!.PeriodeAkademik.TahunAkademik || '';
@@ -40,19 +44,11 @@
 		<NavbarBackLink slot="left" text="Back" href="/onedevice" component="a" />
 	</Navbar>
 	<Block>
-		<select
-			bind:value={semesterSelected}
-			on:change={refresh}
-			class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-		>
-			{#each $initKhs?.Semester || [] as semester}
-				<option value={semester.Kode}>{semester.Nama}</option>
-			{/each}
-		</select>
+		<PilihSemester bind:kode={semesterSelected} />
 		<select
 			bind:value={tahunAkademikSelected}
 			on:change={refresh}
-			class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+			class="mt-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
 		>
 			{#each $initKhs?.Tahun || [] as { thn_ajaran }}
 				<option value={thn_ajaran}>{thn_ajaran}</option>

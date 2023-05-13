@@ -1,5 +1,5 @@
-import type { IJadwalKuliah } from '@binsarjr/apiamikomone/lib/typings/Response';
-import moment from 'moment';
+import type { IJadwalKuliah } from '@binsarjr/apiamikomone/lib/typings/Response'
+import moment from 'moment'
 
 /**
  * Membuat sebuah fungsi yang dapat membuat pemanggilnya tertunda selama waktu
@@ -73,4 +73,30 @@ export const findJadwalSebelumWaktu = (
 		}
 		return false;
 	});
+};
+
+import crypto from 'crypto'
+
+export const makeObjectCache = ({
+	data,
+	lastModified,
+	maxAge
+}: {
+	data?: any;
+	lastModified?: Date;
+	maxAge: number;
+}) => {
+	const headers: any = {
+		'cache-control': `max-age=${maxAge},must-revalidate`
+	};
+
+	if (data) {
+		const etag = crypto.createHash('md5').update(JSON.stringify(data)).digest('hex');
+		headers['etag'] = etag;
+	}
+	if(lastModified) headers['last-modified'] = lastModified.toString()
+
+
+
+	return headers;
 };

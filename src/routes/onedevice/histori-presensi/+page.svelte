@@ -11,8 +11,11 @@
 
 	let semesterSelected: number = 0;
 	let tahunAkademikSelected: string = '';
+
+	let id: any
 	const refresh = async () => {
-		const id = toast.loading('sync', { position: 'top-right' });
+		if(id) return
+		id = toast.loading('sync', { position: 'top-right' });
 		const cacheSatuBulan = !(
 			semesterSelected == $mahasiswa?.PeriodeAkademik.Semester &&
 			tahunAkademikSelected == $mahasiswa.PeriodeAkademik.TahunAkademik
@@ -24,6 +27,7 @@
 			cacheSatuBulan
 		);
 		toast.success('selesai', { id, position: 'top-right' });
+		id=undefined
 	};
 
 	$: if(semesterSelected) {

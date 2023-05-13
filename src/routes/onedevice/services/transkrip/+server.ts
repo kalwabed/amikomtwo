@@ -1,5 +1,6 @@
-import { MikomOneDevice } from '@binsarjr/apiamikomone';
-import { json, type RequestHandler } from '@sveltejs/kit';
+import { MikomOneDevice } from '@binsarjr/apiamikomone'
+import { json, type RequestHandler } from '@sveltejs/kit'
+import { makeObjectCache } from '../../../../lib/supports/utils'
 // import CryptoJs from 'crypto'
 
 export const GET: RequestHandler = async ({ url, setHeaders, cookies }) => {
@@ -7,13 +8,11 @@ export const GET: RequestHandler = async ({ url, setHeaders, cookies }) => {
 	const apikey = url.searchParams.get('api_key')?.toString() || '';
 	const response = await MikomOneDevice.Akademik.HasilStudi(access_token, apikey);
 
-	// const etag = CryptoJs.createHash('md5').update(JSON.stringify(response)).digest('hex')
-	setHeaders({
-		// 'ETag': etag,
-		// satu bulan
-		'cache-control': 'public,max-age=3600'
-		// 'cache-control': 'public,max-age=2592000'
-	});
+	
+	setHeaders(makeObjectCache({
+		data:response,
+		maxAge: 60*60
+	}))
 
 	return json(response);
 };

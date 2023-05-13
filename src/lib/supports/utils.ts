@@ -87,7 +87,7 @@ export const makeObjectCache = ({
 	maxAge: number;
 }) => {
 	const headers: any = {
-		'cache-control': `max-age=${maxAge},must-revalidate`
+		'cache-control': `public,max-age=${maxAge},must-revalidate`
 	};
 
 	if (data) {

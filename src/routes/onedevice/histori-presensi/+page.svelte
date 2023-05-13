@@ -8,6 +8,7 @@
 	import { mahasiswa } from '../../../lib/stores/mahasiswa';
 	import { historiPresensi } from '../../../lib/stores/presensi';
 	import PilihSemester from '../../../lib/components/PilihSemester.svelte';
+	import { browser } from '$app/environment';
 
 	let semesterSelected: number = 0;
 	let tahunAkademikSelected: string = '';
@@ -16,21 +17,16 @@
 	const refresh = async () => {
 		if(id) return
 		id = toast.loading('sync', { position: 'top-right' });
-		const cacheSatuBulan = !(
-			semesterSelected == $mahasiswa?.PeriodeAkademik.Semester &&
-			tahunAkademikSelected == $mahasiswa.PeriodeAkademik.TahunAkademik
-		);
 
 		$historiPresensi = await serviceClient.historiPresensi(
 			semesterSelected,
 			tahunAkademikSelected,
-			cacheSatuBulan
 		);
 		toast.success('selesai', { id, position: 'top-right' });
 		id=undefined
 	};
 
-	$: if(semesterSelected) {
+	$: if(browser && semesterSelected) {
 		refresh()
 	}
 	onMount(async () => {

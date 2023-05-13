@@ -87,14 +87,15 @@ export const makeObjectCache = ({
 	maxAge: number;
 }) => {
 	const headers: any = {
-		'cache-control': `public,max-age=${maxAge},must-revalidate`
+		'Cache-Control': `public,max-age=${maxAge},must-revalidate`
 	};
 
 	if (data) {
 		const etag = crypto.createHash('md5').update(JSON.stringify(data)).digest('hex');
-		headers['etag'] = etag;
+		headers['ETag'] = etag;
+		headers['Content-MD5'] = etag;
 	}
-	if(lastModified) headers['last-modified'] = lastModified.toString()
+	if(lastModified) headers['Last-Modified'] = lastModified.toString()
 
 
 

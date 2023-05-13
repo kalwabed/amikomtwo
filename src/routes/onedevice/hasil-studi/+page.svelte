@@ -7,6 +7,7 @@
 	import toast from 'svelte-french-toast';
 	import { initKhs } from '../../../lib/stores/initKhs';
 	import PilihSemester from '../../../lib/components/PilihSemester.svelte';
+	import { browser } from '$app/environment';
 
 	let semesterSelected: number = 0;
 	let tahunAkademikSelected: string = '';
@@ -26,7 +27,7 @@
 		await serviceClient.hasilStudi(semesterSelected, tahunAkademikSelected, cache);
 		toast.success('selesai', { id, position: 'top-right' });
 	};
-	$: if (semesterSelected) {
+	$: if (browser && semesterSelected) {
 		refresh();
 	}
 	onMount(() => {

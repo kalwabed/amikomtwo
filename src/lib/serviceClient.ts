@@ -137,11 +137,10 @@ export const serviceClient = {
 	 * @returns array of IPresence jika request berhasil, array kosong jika
 	 * sebaliknya
 	 */
-	historiPresensi: async (semester: number, tahunAkademik: string, cacheSatuBulan = false) => {
+	historiPresensi: async (semester: number, tahunAkademik: string) => {
 		const searchParams = new URLSearchParams();
 		searchParams.set('semester', semester.toString());
 		searchParams.set('tahun_akademik', tahunAkademik);
-		if (cacheSatuBulan) searchParams.set('cache', cacheSatuBulan.toString());
 		const r = await reqService('/onedevice/services/histori-presensi', searchParams);
 		const resp: IPresence[] = await r.json();
 		return r.status == 200 ? resp : [];

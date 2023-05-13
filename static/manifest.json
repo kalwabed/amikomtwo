@@ -38,6 +38,18 @@
 					"sizes": "192x192"
 				}
 			]
+		},
+		{
+			"name": "Amikom Two",
+			"short_name": "AmikomTWO",
+			"description": "Halaman Amikom Two",
+			"url": "/",
+			"icons": [
+				{
+					"src": "/favicon.png",
+					"sizes": "192x192"
+				}
+			]
 		}
 	],
 	"description": "Sebuah website yang diadaptasi dari AmikomONE untuk solusi pengguna IOS. Terjamin aman karena bersifat open source.semua nya bisa dilihat secara terbuka. https://github.com/binsarjr/amikomtwo/wiki"

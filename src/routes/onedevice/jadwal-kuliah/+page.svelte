@@ -18,6 +18,7 @@
 	import HorizontalScrollContent from '../../../lib/components/HorizontalScrollContent.svelte';
 	import { fade } from 'svelte/transition';
 	import { autofocus } from '../../../lib/actions/focus';
+	import MataKuliahCard from '../../../lib/components/cards/MataKuliahCard.svelte';
 	const todayId = new Date().getDay();
 	let idHariSelected = todayId.toString();
 	let jadwalSelected: IJadwalKuliah[] = [];
@@ -57,7 +58,16 @@
 		</HorizontalScrollContent>
 	</Block>
 	<BlockTitle>Jadwal Kuliah</BlockTitle>
-	<List strongIos insetIos outlineIos>
+	<Block>
+		<div class="flex flex-col gap-5">
+			{#each jadwalSelected as jadwal}
+				<MataKuliahCard item={jadwal} />
+			{:else}
+				<p>Tidak ada mata kuliah</p>
+			{/each}
+		</div>
+	</Block>
+	<!-- <List strongIos insetIos outlineIos>
 		{#each jadwalSelected as jadwal}
 			<ListItem
 				title={jadwal.MataKuliah}
@@ -78,6 +88,7 @@
 		{:else}
 			<ListItem title="Tidak ada jadwal" />
 		{/each}
-	</List>
-	<div class="pb-10"></div>
+	</List> -->
+
+	<div class="pb-10" />
 </Page>

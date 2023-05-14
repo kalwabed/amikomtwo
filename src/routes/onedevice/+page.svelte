@@ -1,9 +1,20 @@
 <script lang="ts">
-	import { jadwal, jadwalHariIni } from '$lib/stores/jadwal';
+	import { getIdFromJadwal, jadwal, jadwalHariIni, jadwalMatkulAktif } from '$lib/stores/jadwal';
 	import { mahasiswa } from '$lib/stores/mahasiswa';
 	import { Block, BlockTitle, List, ListItem } from 'konsta/svelte';
 	import PengumumanDetail from '../../lib/components/PengumumanDetail.svelte';
 	import { pengumuman } from '../../lib/stores/akademik';
+	import HorizontalScrollContent from '../../lib/components/HorizontalScrollContent.svelte';
+	import MataKuliahCard from '../../lib/components/cards/MataKuliahCard.svelte';
+	import type { IJadwalKuliah } from '@binsarjr/apiamikomone/lib/typings/Response';
+	import { page } from '$app/stores';
+	import { afterNavigate } from '$app/navigation';
+
+	const compareIdJadwal = (item: IJadwalKuliah) => {
+		if (!$jadwalMatkulAktif) return false;
+
+		return getIdFromJadwal(item) == getIdFromJadwal($jadwalMatkulAktif as IJadwalKuliah);
+	};
 </script>
 
 <List strongIos insetIos>
@@ -14,8 +25,23 @@
 </List>
 
 <BlockTitle>Jadwal Kuliah Hari Ini</BlockTitle>
-<List strongIos insetIos outlineIos>
-	{#each $jadwalHariIni as {Keterangan, MataKuliah, JenisKuliah, Waktu, Ruang, EmailDosen,  Kode,NamaDosen,ZoomURL}}
+<Block>
+	<HorizontalScrollContent wheel>
+		<div class="flex items-center h-full">
+				{#each $jadwalHariIni as item}
+					<MataKuliahCard
+						{item}
+						focusToElement={compareIdJadwal(item)}
+						class="min-w-[400px] scale-[95%] p-0 m-0"
+					/>
+				{:else}
+					<p>Tidak ada jadwal kuliah</p>
+				{/each}
+		</div>
+	</HorizontalScrollContent>
+</Block>
+<!-- <Lit strongIos insetIos outlineIos>
+	{#each $jadwalHariIni as { Keterangan, MataKuliah, JenisKuliah, Waktu, Ruang, EmailDosen, Kode, NamaDosen, ZoomURL }}
 		<ListItem
 			title={MataKuliah}
 			header={JenisKuliah + (!!Keterangan ? ' (' + Keterangan + ')' : '')}
@@ -23,17 +49,17 @@
 			text={EmailDosen}
 			after={Kode}
 		>
-		<svelte:fragment slot="footer">
-		<div class="mt-2 mb-4">
-			<p>{NamaDosen}</p>
-		<a href="{ZoomURL}" target="_blank" rel="noreferrer" class="text-blue-600">{ZoomURL}</a>
-		</div>
-		</svelte:fragment>
-	</ListItem>
+			<svelte:fragment slot="footer">
+				<div class="mt-2 mb-4">
+					<p>{NamaDosen}</p>
+					<a href={ZoomURL} target="_blank" rel="noreferrer" class="text-blue-600">{ZoomURL}</a>
+				</div>
+			</svelte:fragment>
+		</ListItem>
 	{:else}
 		<ListItem title="Tidak ada jadwal" />
 	{/each}
-</List>
+</Lit> -->
 <BlockTitle>Menu</BlockTitle>
 <List strongIos insetIos outlineIos>
 	<ListItem link title="Histori Presensi" href="/onedevice/histori-presensi" />

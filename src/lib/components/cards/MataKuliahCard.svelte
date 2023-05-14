@@ -19,14 +19,14 @@
 		if (id) clearTimeout(id);
 	});
 
-	const convertRuangan = (ruang:string) => {
-		if(ruang.toLowerCase().startsWith('vr')) return "Virtual Room"
-		if(ruang.toLowerCase().startsWith('l')) {
-			ruang = ruang.replace(/^l\s{0,}/i,'')
+	const convertRuangan = (ruang: string) => {
+		if (ruang.toLowerCase().startsWith('vr')) return 'Virtual Room';
+		if (ruang.toLowerCase().startsWith('l')) {
+			ruang = ruang.replace(/^l\s{0,}/i, '');
 		}
-		const [gedung,lantai,ruangan] = ruang.split('.',3)
-		return `Gedung ${parseInt(gedung)} Lantai ${parseInt(lantai)} Ruang ${parseInt(ruangan)}`
-	}
+		const [gedung, lantai, ruangan] = ruang.split('.', 3);
+		return `Gedung ${parseInt(gedung)} Lantai ${parseInt(lantai)} Ruang ${parseInt(ruangan)}`;
+	};
 </script>
 
 <section use:autofocus={focus} {...$$restProps}>
@@ -35,7 +35,9 @@
 			<div class="grid grid-cols-[1fr,.20fr] items-center">
 				<div class="my-auto">
 					{#if item.Keterangan}
-						<p class="text-2xs font-medium bg-black bg-opacity-70 inline-block p-2 rounded mb-2">{item.Keterangan}</p>
+						<p class="text-2xs font-medium bg-black bg-opacity-70 inline-block p-2 rounded mb-2">
+							{item.Keterangan}
+						</p>
 					{/if}
 					<h3 class="font-bold text-lg">{item.MataKuliah}</h3>
 					<div class="mt-4">
@@ -62,9 +64,8 @@
 			</div>
 		</div>
 		<div
-			class="px-6 py-4 bg-black bg-opacity-65 rounded-b-xl font-bold grid grid-cols-[.60fr,.30fr] justify-between items-center"
+			class="px-6 py-4 bg-black bg-opacity-65 rounded-b-xl font-bold flex justify-between items-center gap-5"
 		>
-			
 			<div class="flex items-center gap-2">
 				<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"
 					><path
@@ -76,17 +77,17 @@
 					<div>
 						{item.Ruang}
 					</div>
-					<div class="text-xs">{convertRuangan(item.Ruang)}</div>
+					<div class="text-xs">{@html convertRuangan(item.Ruang)}</div>
 				</div>
 			</div>
-			<div class="flex items-center gap-2">
+			<div class="flex flex-nowrap whitespace-nowrap items-center gap-2">
 				<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"
 					><path
 						fill="currentColor"
 						d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8s8 3.58 8 8s-3.58 8-8 8zm.5-13H11v6l5.25 3.15l.75-1.23l-4.5-2.67z"
 					/></svg
 				>
-				{item.Waktu}
+				<p>{item.Waktu}</p>
 			</div>
 		</div>
 	</div>

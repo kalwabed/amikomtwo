@@ -52,3 +52,12 @@
 		<slot />
 	</App>
 </main>
+
+<style>
+	:global(#nprogress .bar) {
+		@apply bg-primary;
+	}
+	:global(#nprogress .spinner-icon) {
+		@apply border-primary;
+	}
+</style>

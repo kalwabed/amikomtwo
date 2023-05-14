@@ -18,6 +18,15 @@
 	onDestroy(() => {
 		if (id) clearTimeout(id);
 	});
+
+	const convertRuangan = (ruang:string) => {
+		if(ruang.toLowerCase().startsWith('vr')) return "Virtual Room"
+		if(ruang.toLowerCase().startsWith('l')) {
+			ruang = ruang.replace(/^l\s{0,}/i,'')
+		}
+		const [gedung,lantai,ruangan] = ruang.split('.',3)
+		return `Gedung ${parseInt(gedung)} Lantai ${parseInt(lantai)} Ruang ${parseInt(ruangan)}`
+	}
 </script>
 
 <section use:autofocus={focus} {...$$restProps}>
@@ -26,7 +35,7 @@
 			<div class="grid grid-cols-[1fr,.20fr] items-center">
 				<div class="my-auto">
 					{#if item.Keterangan}
-						<p class="text-2xs font-medium">{item.Keterangan}</p>
+						<p class="text-2xs font-medium bg-black bg-opacity-70 inline-block p-2 rounded mb-2">{item.Keterangan}</p>
 					{/if}
 					<h3 class="font-bold text-lg">{item.MataKuliah}</h3>
 					<div class="mt-4">
@@ -53,8 +62,23 @@
 			</div>
 		</div>
 		<div
-			class="px-6 py-4 bg-black bg-opacity-65 rounded-b-xl font-bold flex justify-between items-center"
+			class="px-6 py-4 bg-black bg-opacity-65 rounded-b-xl font-bold grid grid-cols-[.60fr,.30fr] justify-between items-center"
 		>
+			
+			<div class="flex items-center gap-2">
+				<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"
+					><path
+						fill="currentColor"
+						d="M12 12q.825 0 1.413-.588T14 10q0-.825-.588-1.413T12 8q-.825 0-1.413.588T10 10q0 .825.588 1.413T12 12Zm0 9.625q-.2 0-.4-.075t-.35-.2Q7.6 18.125 5.8 15.362T4 10.2q0-3.75 2.413-5.975T12 2q3.175 0 5.588 2.225T20 10.2q0 2.4-1.8 5.163t-5.45 5.987q-.15.125-.35.2t-.4.075Z"
+					/></svg
+				>
+				<div class="">
+					<div>
+						{item.Ruang}
+					</div>
+					<div class="text-xs">{convertRuangan(item.Ruang)}</div>
+				</div>
+			</div>
 			<div class="flex items-center gap-2">
 				<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"
 					><path
@@ -63,15 +87,6 @@
 					/></svg
 				>
 				{item.Waktu}
-			</div>
-			<div class="flex items-center gap-2">
-				<svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24"
-					><path
-						fill="currentColor"
-						d="M12 12q.825 0 1.413-.588T14 10q0-.825-.588-1.413T12 8q-.825 0-1.413.588T10 10q0 .825.588 1.413T12 12Zm0 9.625q-.2 0-.4-.075t-.35-.2Q7.6 18.125 5.8 15.362T4 10.2q0-3.75 2.413-5.975T12 2q3.175 0 5.588 2.225T20 10.2q0 2.4-1.8 5.163t-5.45 5.987q-.15.125-.35.2t-.4.075Z"
-					/></svg
-				>
-				{item.Ruang}
 			</div>
 		</div>
 	</div>

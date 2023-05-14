@@ -19,18 +19,28 @@
 	import { fade } from 'svelte/transition';
 	import { autofocus } from '../../../lib/actions/focus';
 	import MataKuliahCard from '../../../lib/components/cards/MataKuliahCard.svelte';
+	import { afterNavigate, beforeNavigate, goto, invalidate } from '$app/navigation';
+	import { pageLoader } from '../../../lib/stores/preferences';
 	const todayId = new Date().getDay();
-	let idHariSelected = todayId.toString();
+	let idHariSelected = $page.url.searchParams.get('id_hari') || todayId.toString();
 	let jadwalSelected: IJadwalKuliah[] = [];
 
 	const getJadwal = async () => {
+		idHariSelected = $page.url.searchParams.get('id_hari') || todayId.toString();
 		let idHari = parseInt(idHariSelected);
 		jadwalSelected = $jadwal.filter((jadwal) => jadwal.IdHari == idHari);
 	};
-	$: if (idHariSelected) getJadwal();
-	onMount(() => {
+
+	beforeNavigate(({to}) => {
+		$pageLoader=(to?.route.id != $page.url.pathname)
+	})
+
+	$: if(browser) getJadwal()
+	afterNavigate(() => {
 		getJadwal();
+
 	});
+	
 </script>
 
 <Page>
@@ -47,7 +57,8 @@
 						use:autofocus={idHari.toString() == idHariSelected}
 						class="px-8 py-4 rounded-lg border"
 						on:click={() => {
-							idHariSelected = idHari.toString();
+							$page.url.searchParams.set('id_hari', idHari.toString());
+							goto($page.url.toString());
 						}}
 						class:bg-white={idHariSelected != idHari.toString()}
 						class:bg-primary={idHariSelected == idHari.toString()}
@@ -59,7 +70,7 @@
 	</Block>
 	<BlockTitle>Jadwal Kuliah</BlockTitle>
 	<Block>
-		<div class="flex flex-col gap-5">
+		<div class="flex flex-col gap-5" >
 			{#each jadwalSelected as jadwal}
 				<MataKuliahCard item={jadwal} />
 			{:else}

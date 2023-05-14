@@ -8,7 +8,7 @@
 
 	// NProgress css
 	import 'nprogress/nprogress.css';
-	import { authUser, isIos } from '$lib/stores/preferences';
+	import { authUser, isIos, pageLoader } from '$lib/stores/preferences';
 	import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
@@ -30,11 +30,13 @@
 	});
 
 	$: {
-		if ($navigating) {
-			NProgress.start();
-		}
-		if (!$navigating) {
-			NProgress.done();
+		if ($pageLoader) {
+			if ($navigating) {
+				NProgress.start();
+			}
+			if (!$navigating) {
+				NProgress.done();
+			}
 		}
 	}
 	onMount(() => {

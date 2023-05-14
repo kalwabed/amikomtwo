@@ -2,6 +2,7 @@
 	// @ts-nocheck
 	import { onMount } from 'svelte';
 	export let draggable = true;
+	export let pointer = true;
 	export let wheel = false;
 	
 	let slider;
@@ -67,7 +68,7 @@
 
 <div class="clear" />
 <div bind:this={slider} class="parent">
-	<div class="child">
+	<div class="child" class:cursor-pointer={pointer}>
 		<slot />
 	</div>
 </div>
@@ -88,7 +89,6 @@
 
 	.child {
 		float: left;
-		cursor: pointer;
 		/* scroll-snap-align: center; */
 	}
 	.clear {

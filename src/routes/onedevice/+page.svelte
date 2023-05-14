@@ -26,8 +26,8 @@
 
 <BlockTitle>Jadwal Kuliah Hari Ini</BlockTitle>
 <Block>
-	<HorizontalScrollContent wheel>
-		<div class="flex items-center h-full">
+	<HorizontalScrollContent wheel pointer={false}>
+		<div class="flex items-stretch h-full">
 				{#each $jadwalHariIni as item}
 					<MataKuliahCard
 						{item}

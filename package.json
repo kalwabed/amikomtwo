@@ -198,12 +198,16 @@
 		}
 	},
 	"dependencies": {
+		"@trpc/client": "^10.27.1",
+		"@trpc/server": "^10.27.1",
 		"@zxing/browser": "^0.1.1",
 		"@zxing/library": "^0.19.2",
 		"etag": "^1.8.1",
 		"events": "^3.3.0",
 		"fs": "0.0.1-security",
 		"path": "^0.12.7",
-		"push.js": "^1.0.12"
+		"push.js": "^1.0.12",
+		"trpc-sveltekit": "^3.5.8",
+		"zod": "^3.21.4"
 	}
 }

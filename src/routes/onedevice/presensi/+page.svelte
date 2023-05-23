@@ -5,7 +5,7 @@
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
 	import { enhance } from '$app/forms';
 	import { myenhance } from '$lib/forms/myenhance';
-	import { navigating } from '$app/stores';
+	import { navigating, page } from '$app/stores';
 	import toast from 'svelte-french-toast';
 	import { authUser, preferences } from '../../../lib/stores/preferences';
 	import { usersGuest, type UserGuest, usersGuestStatus } from '../../../lib/stores/userguest';
@@ -14,6 +14,8 @@
 	import { sleep } from '../../../lib/supports/utils';
 	import { getIdFromJadwal, jadwalHariIni, jadwalMatkulAktif } from '$lib/stores/jadwal';
 	import { mahasiswa } from '../../../lib/stores/mahasiswa';
+	import type { RouterInputs } from '$lib/trpc/t';
+	import { trpc } from '$lib/trpc/client';
 
 	let qrImages: FileList | null;
 	let qrresult: string | null;
@@ -64,19 +66,19 @@
 
 	const guestCodeSubmit = async () => {
 		const id = toast.loading('Mohon Menunggu...');
-		const formdata = new FormData();
-		formdata.set('code', code);
+		const query: RouterInputs['presensi']['code'] = {
+			code,
+			accounts: []
+		};
 		guests.map((user) => {
 			if (except.includes(user)) return;
-			formdata.append('nim', user.nim);
-			formdata.append('password', user.password || '');
+			query.accounts.push({
+				nim: user.nim,
+				password: user?.password || ''
+			});
 		});
 
-		const resp = await fetch('/services/presensi/code', {
-			method: 'POST',
-			body: formdata
-		});
-		const results: { success: boolean; message: string }[] = await resp.json();
+		const results = await trpc($page).presensi.code.query(query);
 		results.map((result) => {
 			if (result.success) toast.success(result.message);
 			else toast.error(result.message);
@@ -85,24 +87,19 @@
 	};
 	const guestQrCodeSubmit = async () => {
 		const id = toast.loading('Mohon Menunggu...');
-		const formdata = new FormData();
-		formdata.set('data', qrresult || '');
-		// add current user
-		formdata.append('nim', $preferences.nim);
-		formdata.append('password', $preferences.password);
-
-		// guest account
+		const query: RouterInputs['presensi']['qrcode'] = {
+			data: qrresult || '',
+			accounts: []
+		};
 		guests.map((user) => {
 			if (except.includes(user)) return;
-			formdata.append('nim', user.nim);
-			formdata.append('password', user.password || '');
+			query.accounts.push({
+				nim: user.nim,
+				password: user?.password || ''
+			});
 		});
 
-		const resp = await fetch('/services/presensi/qrcode', {
-			method: 'POST',
-			body: formdata
-		});
-		const results: { success: boolean; message: string }[] = await resp.json();
+		const results = await trpc($page).presensi.qrcode.query(query);
 		results.map((result) => {
 			if (result.success) toast.success(result.message);
 			else toast.error(result.message);

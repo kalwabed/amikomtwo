@@ -4,7 +4,7 @@
 	export let draggable = true;
 	export let pointer = true;
 	export let wheel = false;
-	
+
 	let slider;
 
 	onMount(() => {

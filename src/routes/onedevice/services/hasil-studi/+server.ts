@@ -1,7 +1,7 @@
-import { MikomOneDevice } from '@binsarjr/apiamikomone'
-import { json, type RequestHandler } from '@sveltejs/kit'
+import { MikomOneDevice } from '@binsarjr/apiamikomone';
+import { json, type RequestHandler } from '@sveltejs/kit';
 
-import { makeObjectCache } from '../../../../lib/supports/utils'
+import { makeObjectCache } from '../../../../lib/supports/utils';
 
 export const GET: RequestHandler = async ({ url, setHeaders }) => {
 	const access_token = url.searchParams.get('access_token')?.toString() || '';
@@ -15,11 +15,12 @@ export const GET: RequestHandler = async ({ url, setHeaders }) => {
 		tahunAkademik
 	);
 
-	
-	setHeaders(makeObjectCache({
-		data: response,
-		// tujuh hari
-		maxAge: 60*60*24*7
-	}))
+	setHeaders(
+		makeObjectCache({
+			data: response,
+			// tujuh hari
+			maxAge: 60 * 60 * 24 * 7
+		})
+	);
 	return json(response);
 };

@@ -9,8 +9,8 @@
 	import PilihSemester from '../../../lib/components/PilihSemester.svelte';
 	import { browser } from '$app/environment';
 
-	let semesterSelected: number = 0;
-	let tahunAkademikSelected: string = '';
+	let semesterSelected = 0;
+	let tahunAkademikSelected = '';
 	const refresh = async () => {
 		const cache = !(
 			tahunAkademikSelected == $mahasiswa?.PeriodeAkademik.TahunAkademik &&

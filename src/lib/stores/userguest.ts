@@ -1,4 +1,4 @@
-import { writable } from 'svelte-local-storage-store'
+import { writable } from 'svelte-local-storage-store';
 export interface UserGuest {
 	nim: string;
 	nama: string;
@@ -10,9 +10,8 @@ export interface UserGuest {
 }
 export const usersGuest = writable<UserGuest[]>('usersguest', []);
 
-
 export const usersGuestStatus = writable<{
-	[key: string|number]: {
-		[key: string]: boolean
-	}
-}>('usersGuestStatus',{})
+	[key: string | number]: {
+		[key: string]: boolean;
+	};
+}>('usersGuestStatus', {});

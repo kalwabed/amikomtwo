@@ -2,7 +2,7 @@
 	import '../app.css';
 	import { App, Block, Button, Page } from 'konsta/svelte';
 	import { Toaster } from 'svelte-french-toast';
-	// @ts-ignore
+	// @ts-ignore: no types
 	import NProgress from 'nprogress';
 	import { navigating, page } from '$app/stores';
 
@@ -40,7 +40,7 @@
 		}
 	}
 	onMount(() => {
-		// @ts-ignore
+		// @ts-ignore: no types
 		$isIos = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 	});
 </script>

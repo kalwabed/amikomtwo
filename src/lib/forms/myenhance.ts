@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import { applyAction } from '$app/forms';
 import { goto } from '$app/navigation';
 import toast from 'svelte-french-toast';

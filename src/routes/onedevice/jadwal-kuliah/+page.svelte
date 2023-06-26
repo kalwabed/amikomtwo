@@ -31,16 +31,14 @@
 		jadwalSelected = $jadwal.filter((jadwal) => jadwal.IdHari == idHari);
 	};
 
-	beforeNavigate(({to}) => {
-		$pageLoader=(to?.route.id != $page.url.pathname)
-	})
+	beforeNavigate(({ to }) => {
+		$pageLoader = to?.route.id != $page.url.pathname;
+	});
 
-	$: if(browser) getJadwal()
+	$: if (browser) getJadwal();
 	afterNavigate(() => {
 		getJadwal();
-
 	});
-	
 </script>
 
 <Page>
@@ -70,7 +68,7 @@
 	</Block>
 	<BlockTitle>Jadwal Kuliah</BlockTitle>
 	<Block>
-		<div class="flex flex-col gap-5" >
+		<div class="flex flex-col gap-5">
 			{#each jadwalSelected as jadwal}
 				<MataKuliahCard item={jadwal} />
 			{:else}

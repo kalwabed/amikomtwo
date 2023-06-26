@@ -1,6 +1,6 @@
-import { fail } from '@sveltejs/kit'
-import { authAttempt, encPassword } from '../../../lib/supports/auth'
-import type { Actions } from './$types'
+import { fail } from '@sveltejs/kit';
+import { authAttempt, encPassword } from '../../../lib/supports/auth';
+import type { Actions } from './$types';
 
 export const actions: Actions = {
 	default: async ({ request }) => {

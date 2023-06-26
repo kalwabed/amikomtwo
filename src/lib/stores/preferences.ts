@@ -1,5 +1,5 @@
-import { writable } from 'svelte-local-storage-store'
-import { writable as W } from 'svelte/store'
+import { writable } from 'svelte-local-storage-store';
+import { writable as W } from 'svelte/store';
 
 export const isIos = writable('isIos', false);
 
@@ -15,5 +15,4 @@ export const authUser = writable<{
 	apiKey: string;
 } | null>('authuser', null);
 
-
-export const pageLoader = W(true)
+export const pageLoader = W(true);

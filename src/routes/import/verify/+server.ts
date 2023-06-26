@@ -5,7 +5,7 @@ import type { RequestHandler } from './$types';
 export const POST: RequestHandler = async ({ request }) => {
 	try {
 		const formdata = await request.formData();
-		let encrypted = formdata.get('guest') as string;
+		const encrypted = formdata.get('guest') as string;
 
 		return json(decryptGuestData(encrypted));
 	} catch (error) {

@@ -7,7 +7,7 @@
 	export let guests: UserGuest[] = [];
 	export let except: UserGuest[] = [];
 
-	const dispatch = createEventDispatcher()
+	const dispatch = createEventDispatcher();
 
 	$: if ($usersGuest) {
 		guests = $usersGuest;
@@ -24,11 +24,10 @@
 		checkboxs[indexGuest] = !checkboxs[indexGuest];
 		if (guests.includes($usersGuest[indexGuest])) {
 			guests = guests.filter((guest) => guest != $usersGuest[indexGuest]);
-			dispatch('deactive', $usersGuest[indexGuest])
+			dispatch('deactive', $usersGuest[indexGuest]);
 		} else {
 			guests[guests.length] = $usersGuest[indexGuest];
-			dispatch('active', $usersGuest[indexGuest])
-
+			dispatch('active', $usersGuest[indexGuest]);
 		}
 	};
 </script>

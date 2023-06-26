@@ -28,15 +28,15 @@
 <Block>
 	<HorizontalScrollContent wheel pointer={false}>
 		<div class="flex items-stretch h-full">
-				{#each $jadwalHariIni as item}
-					<MataKuliahCard
-						{item}
-						focusToElement={compareIdJadwal(item)}
-						class="min-w-[400px] scale-[95%] p-0 m-0"
-					/>
-				{:else}
-					<p>Tidak ada jadwal kuliah</p>
-				{/each}
+			{#each $jadwalHariIni as item}
+				<MataKuliahCard
+					{item}
+					focusToElement={compareIdJadwal(item)}
+					class="min-w-[400px] scale-[95%] p-0 m-0"
+				/>
+			{:else}
+				<p>Tidak ada jadwal kuliah</p>
+			{/each}
 		</div>
 	</HorizontalScrollContent>
 </Block>

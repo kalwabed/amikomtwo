@@ -12,7 +12,7 @@ addEventListener('message', (event) => {
 				id,
 				title: `${jadwal.MataKuliah} (Berlangsung)`,
 				body: `
-${jadwal.JenisKuliah} ${!!jadwal.Keterangan ? '(' + jadwal.Keterangan + ')' : ''} 
+${jadwal.JenisKuliah} ${jadwal.Keterangan ? '(' + jadwal.Keterangan + ')' : ''} 
 
 Waktu: ${jadwal.Waktu}
 Ruang: ${jadwal.Ruang}

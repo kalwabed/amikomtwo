@@ -10,24 +10,21 @@
 	import PilihSemester from '../../../lib/components/PilihSemester.svelte';
 	import { browser } from '$app/environment';
 
-	let semesterSelected: number = 0;
-	let tahunAkademikSelected: string = '';
+	let semesterSelected = 0;
+	let tahunAkademikSelected = '';
 
-	let id: any
+	let id: any;
 	const refresh = async () => {
-		if(id) return
+		if (id) return;
 		id = toast.loading('sync', { position: 'top-right' });
 
-		$historiPresensi = await serviceClient.historiPresensi(
-			semesterSelected,
-			tahunAkademikSelected,
-		);
+		$historiPresensi = await serviceClient.historiPresensi(semesterSelected, tahunAkademikSelected);
 		toast.success('selesai', { id, position: 'top-right' });
-		id=undefined
+		id = undefined;
 	};
 
-	$: if(browser && semesterSelected) {
-		refresh()
+	$: if (browser && semesterSelected) {
+		refresh();
 	}
 	onMount(async () => {
 		semesterSelected =
@@ -49,7 +46,7 @@
 	</Navbar>
 
 	<Block>
-		<PilihSemester bind:kode={semesterSelected}/>
+		<PilihSemester bind:kode={semesterSelected} />
 		<select
 			bind:value={tahunAkademikSelected}
 			on:change={refresh}

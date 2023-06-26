@@ -51,16 +51,16 @@
 		const id = toast.loading('Mohon Menunggu...');
 		const query: RouterInputs['presensi']['code'] = {
 			code,
-			accounts:[]
-		}
+			accounts: []
+		};
 		guests.map((user) => {
 			query.accounts.push({
 				nim: user.nim,
-				password: user?.password||'',
-			})
+				password: user?.password || ''
+			});
 		});
-		
-		const results = await trpc($page).presensi.code.query(query)
+
+		const results = await trpc($page).presensi.code.query(query);
 		results.map((result) => {
 			if (result.success) toast.success(result.message);
 			else toast.error(result.message);

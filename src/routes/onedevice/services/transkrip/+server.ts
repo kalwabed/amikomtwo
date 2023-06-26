@@ -1,6 +1,6 @@
-import { MikomOneDevice } from '@binsarjr/apiamikomone'
-import { json, type RequestHandler } from '@sveltejs/kit'
-import { makeObjectCache } from '../../../../lib/supports/utils'
+import { MikomOneDevice } from '@binsarjr/apiamikomone';
+import { json, type RequestHandler } from '@sveltejs/kit';
+import { makeObjectCache } from '../../../../lib/supports/utils';
 // import CryptoJs from 'crypto'
 
 export const GET: RequestHandler = async ({ url, setHeaders, cookies }) => {
@@ -8,11 +8,12 @@ export const GET: RequestHandler = async ({ url, setHeaders, cookies }) => {
 	const apikey = url.searchParams.get('api_key')?.toString() || '';
 	const response = await MikomOneDevice.Akademik.HasilStudi(access_token, apikey);
 
-	
-	setHeaders(makeObjectCache({
-		data:response,
-		maxAge: 60*60
-	}))
+	setHeaders(
+		makeObjectCache({
+			data: response,
+			maxAge: 60 * 60
+		})
+	);
 
 	return json(response);
 };

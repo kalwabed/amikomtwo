@@ -13,7 +13,7 @@ addEventListener('message', (event) => {
 				id: JSON.stringify(jadwal),
 				title: `${jadwal.MataKuliah} (Mendatang)`,
 				body: `
-${jadwal.JenisKuliah} ${!!jadwal.Keterangan ? '(' + jadwal.Keterangan + ')' : ''} 
+${jadwal.JenisKuliah} ${jadwal.Keterangan ? '(' + jadwal.Keterangan + ')' : ''} 
 
 Waktu: ${jadwal.Waktu}
 Ruang: ${jadwal.Ruang}

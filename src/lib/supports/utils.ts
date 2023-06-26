@@ -1,5 +1,5 @@
-import type { IJadwalKuliah } from '@binsarjr/apiamikomone/lib/typings/Response'
-import moment from 'moment'
+import type { IJadwalKuliah } from '@binsarjr/apiamikomone/lib/typings/Response';
+import moment from 'moment';
 
 /**
  * Membuat sebuah fungsi yang dapat membuat pemanggilnya tertunda selama waktu
@@ -27,19 +27,19 @@ export const findJadwalBerlangsung = (jadwal: IJadwalKuliah[]) => {
 		const now = new Date();
 		if (jadwal.IdHari != now.getDay()) return false;
 
-		let [mulai, selesai] = jadwal.Waktu.split('-', 2);
+		const [mulai, selesai] = jadwal.Waktu.split('-', 2);
 
-		let timeStart = moment();
-		// @ts-ignore
+		const timeStart = moment();
+		// @ts-ignore:L no types
 		timeStart.set('hours', mulai.split(':')[0]);
-		// @ts-ignore
+		// @ts-ignore: no types
 		timeStart.set('minutes', mulai.split(':')[1]);
 		timeStart.set('seconds', 0);
 
-		let timeEnd = moment();
-		// @ts-ignore
+		const timeEnd = moment();
+		// @ts-ignore; no types
 		timeEnd.set('hours', selesai.split(':')[0]);
-		// @ts-ignore
+		// @ts-ignore: no types
 		timeEnd.set('minutes', selesai.split(':')[1]);
 		timeEnd.set('seconds', 0);
 
@@ -58,12 +58,12 @@ export const findJadwalSebelumWaktu = (
 		const now = new Date();
 		if (jadwal.IdHari != now.getDay()) return false;
 
-		let [mulai, selesai] = jadwal.Waktu.split('-', 2);
+		const [mulai, selesai] = jadwal.Waktu.split('-', 2);
 
-		let timeStart = moment();
-		// @ts-ignore
+		const timeStart = moment();
+		// @ts-ignore: no types
 		timeStart.set('hours', mulai.split(':')[0]);
-		// @ts-ignore
+		// @ts-ignore: no types
 		timeStart.set('minutes', mulai.split(':')[1]);
 		timeStart.set('seconds', 0);
 
@@ -75,7 +75,7 @@ export const findJadwalSebelumWaktu = (
 	});
 };
 
-import crypto from 'crypto'
+import crypto from 'crypto';
 
 export const makeObjectCache = ({
 	data,
@@ -95,9 +95,7 @@ export const makeObjectCache = ({
 		headers['ETag'] = etag;
 		headers['Content-MD5'] = etag;
 	}
-	if(lastModified) headers['Last-Modified'] = lastModified.toString()
-
-
+	if (lastModified) headers['Last-Modified'] = lastModified.toString();
 
 	return headers;
 };

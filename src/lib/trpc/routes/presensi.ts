@@ -1,5 +1,5 @@
 import { authAttempt } from '$lib/supports/auth'
-import { randomBetween, sleep } from '$lib/supports/utils'
+import { sleep } from '$lib/supports/utils'
 import { t } from '$lib/trpc/t'
 import { MikomOneDevice } from '@binsarjr/apiamikomone'
 import { PresenceStatus } from '@binsarjr/apiamikomone/lib/typings/Enum/Presence'
@@ -38,7 +38,7 @@ export const presensi = t.router({
 					success: response.status === PresenceStatus.Success,
 					message: `${nim} ${response.message}`
 				})
-				await sleep(randomBetween(500, 1000))
+				await sleep(200)
 			}
 			return responses
 
@@ -75,7 +75,7 @@ export const presensi = t.router({
 					success: response.status === PresenceStatus.Success,
 					message: `${nim} ${response.message}`
 				})
-				await sleep(randomBetween(500, 1000))
+				await sleep(200)
 			}
 			return responses
 

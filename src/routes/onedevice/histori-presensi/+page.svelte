@@ -16,10 +16,10 @@
 	let id: any;
 	const refresh = async () => {
 		if (id) return;
-		id = toast.loading('sync', { position: 'top-right' });
+		id = toast.loading('sync');
 
 		$historiPresensi = await serviceClient.historiPresensi(semesterSelected, tahunAkademikSelected);
-		toast.success('selesai', { id, position: 'top-right' });
+		toast.success('selesai', { id });
 		id = undefined;
 	};
 

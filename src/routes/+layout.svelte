@@ -47,7 +47,7 @@
 
 <!-- See This: https://svelte-french-toast.vercel.app/ -->
 <main class="md:w-[465px] mx-auto">
-	<Toaster />
+	<Toaster position="top-right" />
 	<App theme="ios">
 		<slot />
 	</App>

@@ -34,7 +34,7 @@
 		"qr-scanner": "^1.4.1",
 		"svelte": "^4.0.5",
 		"svelte-check": "^3.4.3",
-		"svelte-french-toast": "^1.0.3",
+		"svelte-french-toast": "^1.1.0",
 		"svelte-local-storage-store": "^0.3.1",
 		"svelte-preprocess": "^5.0.3",
 		"tailwindcss": "^3.3.2",

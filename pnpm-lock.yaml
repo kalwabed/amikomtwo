@@ -106,8 +106,8 @@ devDependencies:
     specifier: ^3.4.3
     version: 3.4.6(postcss@8.4.18)(svelte@4.0.5)
   svelte-french-toast:
-    specifier: ^1.0.3
-    version: 1.0.3(svelte@4.0.5)
+    specifier: ^1.1.0
+    version: 1.1.0(svelte@4.0.5)
   svelte-local-storage-store:
     specifier: ^0.3.1
     version: 0.3.1(svelte@4.0.5)
@@ -3759,12 +3759,13 @@ packages:
       - sugarss
     dev: true
 
-  /svelte-french-toast@1.0.3(svelte@4.0.5):
-    resolution: {integrity: sha512-HBdutlqUx5FroucvcmMJstmTJDedXayiOSXubBYW6iL5x1PdHp+bOflGx5NxsOa6+EQckJnnVv1vJYgGsg7ngQ==}
+  /svelte-french-toast@1.1.0(svelte@4.0.5):
+    resolution: {integrity: sha512-OWlOJD0iqZpL4apMbtsbSZKYukBz9CuME2KoW/zzHfFWVImXVH5zAiCmUU4N0OSPo9fY34TZKIL/5+Sbt5KkPA==}
+    peerDependencies:
+      svelte: ^3.57.0 || ^4.0.0
     dependencies:
-      svelte-writable-derived: 2.1.5(svelte@4.0.5)
-    transitivePeerDependencies:
-      - svelte
+      svelte: 4.0.5
+      svelte-writable-derived: 3.1.0(svelte@4.0.5)
     dev: true
 
   /svelte-hmr@0.15.2(svelte@4.0.5):
@@ -3832,10 +3833,10 @@ packages:
       typescript: 5.1.6
     dev: true
 
-  /svelte-writable-derived@2.1.5(svelte@4.0.5):
-    resolution: {integrity: sha512-g26/W1iWj7FlLwaggNwXxHwMSf70/bHAYcpBT/EijijjakCSU9/PXmn31fL/kw2P1SzVEU6ayyCFuNYqTY3RUw==}
+  /svelte-writable-derived@3.1.0(svelte@4.0.5):
+    resolution: {integrity: sha512-cTvaVFNIJ036vSDIyPxJYivKC7ZLtcFOPm1Iq6qWBDo1fOHzfk6ZSbwaKrxhjgy52Rbl5IHzRcWgos6Zqn9/rg==}
     peerDependencies:
-      svelte: ^3.2.1
+      svelte: ^3.2.1 || ^4.0.0-next.1
     dependencies:
       svelte: 4.0.5
     dev: true

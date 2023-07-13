@@ -17,15 +17,15 @@
 			semesterSelected == $mahasiswa.PeriodeAkademik.Semester
 		);
 		if ($hasilStudiSemester) {
-			const id = toast.loading('sync', { position: 'top-right' });
+			const id = toast.loading('sync');
 			serviceClient.hasilStudi(semesterSelected, tahunAkademikSelected, cache).then((_) => {
-				toast.success('selesai', { id, position: 'top-right' });
+				toast.success('selesai', { id });
 			});
 			return;
 		}
-		const id = toast.loading('sync', { position: 'top-right' });
+		const id = toast.loading('sync');
 		await serviceClient.hasilStudi(semesterSelected, tahunAkademikSelected, cache);
-		toast.success('selesai', { id, position: 'top-right' });
+		toast.success('selesai', { id });
 	};
 	$: if (browser && semesterSelected) {
 		refresh();

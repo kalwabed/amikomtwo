@@ -12,7 +12,6 @@
 	import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
-	import { writable } from 'svelte-local-storage-store';
 	$: if ($authUser?.accessToken && browser) {
 		if (
 			!$page.url.pathname.startsWith('/onedevice') &&

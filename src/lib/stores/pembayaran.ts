@@ -1,5 +1,5 @@
 import type { IHistory } from '@binsarjr/apiamikomone/lib/typings/Response';
-import { writable } from 'svelte-local-storage-store';
+import { persisted } from 'svelte-local-storage-store';
 
-export const listBank = writable<string[]>('listbank', []);
-export const historiPembayaran = writable<IHistory[]>('histori_pembayaran', []);
+export const listBank = persisted<string[]>('listbank', []);
+export const historiPembayaran = persisted<IHistory[]>('histori_pembayaran', []);

@@ -1,4 +1,4 @@
-import { writable } from 'svelte-local-storage-store';
 import type { IBio } from '@binsarjr/apiamikomone/lib/typings/Response';
+import { persisted } from 'svelte-local-storage-store';
 
-export const mahasiswa = writable<IBio | null>('mahasiswa', null);
+export const mahasiswa = persisted<IBio | null>('mahasiswa', null);

@@ -1,18 +1,18 @@
-import { writable } from 'svelte-local-storage-store';
-import { writable as W } from 'svelte/store';
+import { persisted } from 'svelte-local-storage-store';
+import { writable } from 'svelte/store';
 
-export const isIos = writable('isIos', false);
+export const isIos = persisted('isIos', false);
 
-export const preferences = writable('preferences', {
+export const preferences = persisted('preferences', {
 	nim: '',
 	password: '',
 	tanggalLahir: '',
 	otp: ''
 });
 
-export const authUser = writable<{
+export const authUser = persisted<{
 	accessToken: string;
 	apiKey: string;
 } | null>('authuser', null);
 
-export const pageLoader = W(true);
+export const pageLoader = writable(true);

@@ -4,13 +4,13 @@
 	// @ts-ignore
 	import QrScanner from 'qr-scanner';
 	import { browser } from '$app/environment';
-	import { writable } from 'svelte-local-storage-store';
+	import { persisted } from 'svelte-local-storage-store';
 	import toast from 'svelte-french-toast';
 	import { isIos } from '../stores/preferences';
 
 	export let result: string | null;
 	export let imageUrl: string | null = null;
-	let selectedDeviceId = writable<string>('cameraDeviceId', '');
+	let selectedDeviceId = persisted<string>('cameraDeviceId', '');
 	const codeReader = new BrowserMultiFormatReader();
 	let controls: IScannerControls | null = null;
 	let video: HTMLVideoElement;
@@ -36,7 +36,7 @@
 		});
 	}
 
-	let range = writable('zoom', 1);
+	let range = persisted('zoom', 1);
 	const load = async () => {
 		if (controls) {
 			controls.stop();

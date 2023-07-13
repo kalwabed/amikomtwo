@@ -10,7 +10,7 @@
 
 	export let result: string | null;
 	export let imageUrl: string | null = null;
-	let selectedDeviceId = writable<string | undefined>('cameraDeviceId', undefined);
+	let selectedDeviceId = writable<string>('cameraDeviceId', '');
 	const codeReader = new BrowserMultiFormatReader();
 	let controls: IScannerControls | null = null;
 	let video: HTMLVideoElement;
@@ -61,7 +61,7 @@
 
 		videoInputDevices = await BrowserMultiFormatReader.listVideoInputDevices();
 		if (!videoInputDevices.find((p) => p.deviceId == $selectedDeviceId)) {
-			$selectedDeviceId = videoInputDevices[0].deviceId;
+			$selectedDeviceId = videoInputDevices[0].deviceId || '';
 		}
 		// choose your media device (webcam, frontal camera, back camera, etc.)
 
@@ -95,7 +95,7 @@
 	});
 
 	const change = async (e: any) => {
-		$selectedDeviceId = e.target.value;
+		$selectedDeviceId = e.target.value || '';
 		await load();
 	};
 

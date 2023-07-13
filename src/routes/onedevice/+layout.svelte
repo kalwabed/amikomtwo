@@ -74,7 +74,8 @@
 			toast.success('selesai', { id });
 		} catch (error) {
 			toast.error('gagal sync cek kembali koneksimu atau mungkin server amikom sedang down', {
-				id		});
+				id
+			});
 		}
 	});
 	const pages = {

@@ -1,9 +1,9 @@
-import { authAttempt } from '$lib/supports/auth'
-import { sleep } from '$lib/supports/utils'
-import { t } from '$lib/trpc/t'
-import { MikomOneDevice } from '@binsarjr/apiamikomone'
-import { PresenceStatus } from '@binsarjr/apiamikomone/lib/typings/Enum/Presence'
-import { z } from 'zod'
+import { authAttempt } from '$lib/supports/auth';
+import { sleep } from '$lib/supports/utils';
+import { t } from '$lib/trpc/t';
+import { MikomOneDevice } from '@binsarjr/apiamikomone';
+import { PresenceStatus } from '@binsarjr/apiamikomone/lib/typings/Enum/Presence';
+import { z } from 'zod';
 
 export const presensi = t.router({
 	code: t.procedure
@@ -19,29 +19,28 @@ export const presensi = t.router({
 			})
 		)
 		.query(async ({ input }) => {
-			const responses: { success: boolean, message: string }[] = []
+			const responses: { success: boolean; message: string }[] = [];
 			for (const { nim, password } of input.accounts) {
-				let accessToken = ''
+				let accessToken = '';
 				try {
-					const { access_token } = await authAttempt(nim, password)
-					accessToken = access_token
+					const { access_token } = await authAttempt(nim, password);
+					accessToken = access_token;
 				} catch (error) {
 					responses.push({
 						success: false,
 						message: `${nim} Gagal Login, coba minta sign yang baru`
-					})
-					continue
+					});
+					continue;
 				}
 
-				const response = await MikomOneDevice.Presence.Code(accessToken, input.code)
+				const response = await MikomOneDevice.Presence.Code(accessToken, input.code);
 				responses.push({
 					success: response.status === PresenceStatus.Success,
 					message: `${nim} ${response.message}`
-				})
-				await sleep(200)
+				});
+				await sleep(200);
 			}
-			return responses
-
+			return responses;
 		}),
 	qrcode: t.procedure
 		.input(
@@ -56,28 +55,27 @@ export const presensi = t.router({
 			})
 		)
 		.query(async ({ input }) => {
-			const responses: { success: boolean, message: string }[] = []
+			const responses: { success: boolean; message: string }[] = [];
 			for (const { nim, password } of input.accounts) {
-				let accessToken = ''
+				let accessToken = '';
 				try {
-					const { access_token } = await authAttempt(nim, password)
-					accessToken = access_token
+					const { access_token } = await authAttempt(nim, password);
+					accessToken = access_token;
 				} catch (error) {
 					responses.push({
 						success: false,
 						message: `${nim} Gagal Login, coba minta sign yang baru`
-					})
-					continue
+					});
+					continue;
 				}
 
-				const response = await MikomOneDevice.Presence.Qrcode(accessToken, input.data)
+				const response = await MikomOneDevice.Presence.Qrcode(accessToken, input.data);
 				responses.push({
 					success: response.status === PresenceStatus.Success,
 					message: `${nim} ${response.message}`
-				})
-				await sleep(200)
+				});
+				await sleep(200);
 			}
-			return responses
-
+			return responses;
 		})
-})
+});

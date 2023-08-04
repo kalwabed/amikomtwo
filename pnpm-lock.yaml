@@ -54,6 +54,9 @@ devDependencies:
   '@sveltejs/kit':
     specifier: ^1.22.3
     version: 1.22.3(svelte@4.0.5)(vite@4.0.1)
+  '@types/cheerio':
+    specifier: ^0.22.31
+    version: 0.22.31
   '@types/cookie':
     specifier: ^0.5.1
     version: 0.5.1
@@ -69,6 +72,9 @@ devDependencies:
   autoprefixer:
     specifier: ^10.4.12
     version: 10.4.12(postcss@8.4.18)
+  cheerio:
+    specifier: 1.0.0-rc.12
+    version: 1.0.0-rc.12
   eslint:
     specifier: ^8.16.0
     version: 8.26.0
@@ -1273,6 +1279,12 @@ packages:
       '@types/responselike': 1.0.0
     dev: true
 
+  /@types/cheerio@0.22.31:
+    resolution: {integrity: sha512-Kt7Cdjjdi2XWSfrZ53v4Of0wG3ZcmaegFXjMmz9tfNrZSkzzo36G0AL1YqSdcIA78Etjt6E609pt5h1xnQkPUw==}
+    dependencies:
+      '@types/node': 20.4.2
+    dev: true
+
   /@types/cookie@0.5.1:
     resolution: {integrity: sha512-COUnqfB2+ckwXXSFInsFdOAWQzCCx+a5hq2ruyj+Vjund94RJQd4LG2u9hnvJrTgunKAaax7ancBYlDrNYxA0g==}
 
@@ -1310,7 +1322,6 @@ packages:
 
   /@types/node@20.4.2:
     resolution: {integrity: sha512-Dd0BYtWgnWJKwO1jkmTrzofjK2QXXcai0dmtzvIBhcA+RsG5h8R3xlyta0kGOZRNfL9GuRtb1knmPEhQrePCEw==}
-    dev: false
 
   /@types/offscreencanvas@2019.7.0:
     resolution: {integrity: sha512-PGcyveRIpL1XIqK8eBsmRBt76eFgtzuPiSTyKHZxnGemp2yzGzWpjYKAfK3wIMiU7eH+851yEpiuP8JZerTmWg==}

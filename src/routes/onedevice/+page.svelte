@@ -71,12 +71,14 @@
 	<ListItem link title="KTM" href="/onedevice/ktm" />
 </List>
 
-<BlockTitle>Pengumuman</BlockTitle>
+<BlockTitle>Lainnya</BlockTitle>
+<List strongIos insetIos outlineIos>
+	<ListItem link title="Kalender" href="/onedevice/kalender" />
+	<ListItem link title="Pengumuman" href="/onedevice/pengumuman" />
+</List>
 
-<Block>
-	{#each $pengumuman as item}
-		<PengumumanDetail pengumuman={item} />
-	{:else}
-		<p>Tidak ada pengumuman</p>
-	{/each}
-</Block>
+<!-- <BlockTitle>Bagan Informasi</BlockTitle>
+<List strongIos insetIos outlineIos>
+	<ListItem link title="Kemahasiswaan (DAAK)" href="/onedevice/daak" />
+	<ListItem link title="Keuangan (DPK)" href="/onedevice/dpk" />
+</List> -->

@@ -77,8 +77,8 @@
 	<ListItem link title="Pengumuman" href="/onedevice/pengumuman" />
 </List>
 
-<!-- <BlockTitle>Bagan Informasi</BlockTitle>
+<BlockTitle>Bagan Informasi</BlockTitle>
 <List strongIos insetIos outlineIos>
 	<ListItem link title="Kemahasiswaan (DAAK)" href="/onedevice/daak" />
-	<ListItem link title="Keuangan (DPK)" href="/onedevice/dpk" />
-</List> -->
+	<!-- <ListItem link title="Keuangan (DPK)" href="/onedevice/dpk" /> -->
+</List>

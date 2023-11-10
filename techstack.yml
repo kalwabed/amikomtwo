@@ -1,0 +1,335 @@
+repo_name: kalwabed/amikomtwo
+report_id: db75c84d531b465593d45839ff04e6dc
+repo_type: Public
+timestamp: '2023-11-10T12:43:32+00:00'
+requested_by: binsarjr
+provider: github
+branch: main
+detected_tools_count: 25
+tools:
+- name: CSS 3
+  description: The latest evolution of the Cascading Style Sheets language
+  website_url: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/6727/css.png
+  detection_source: Repo Metadata
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source: Repo Metadata
+- name: TypeScript
+  description: A superset of JavaScript that compiles to clean JavaScript output
+  website_url: http://www.typescriptlang.org
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1612/bynNY5dJ.jpg
+  detection_source: Repo Metadata
+- name: Autoprefixer
+  description: PostCSS plugin to parse CSS and add vendor prefixes to CSS rules
+  website_url: https://github.com/postcss/autoprefixer
+  open_source: false
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: CSS Pre-processors / Extensions
+  image_url: https://img.stackshare.io/service/2202/72d087642cfce6fef6f2dabec5bf49e8_400x400.png
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-03-18 10:58:29.000000000 Z
+- name: Svelte
+  description: A UI framework that compiles into tiny standalone JavaScript modules
+  website_url: https://svelte.technology/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript UI Libraries
+  image_url: https://img.stackshare.io/service/6113/7exmJEg4_400x400.png
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-07-13 03:44:30.000000000 Z
+- name: ESLint
+  description: The fully pluggable JavaScript code quality tool
+  website_url: http://eslint.org/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Code Review
+  image_url: https://img.stackshare.io/service/3337/Q4L7Jncy.jpg
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-03-18 10:58:29.000000000 Z
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source: Repo Metadata
+- name: Prettier
+  description: 'Prettier is an opinionated code formatter. '
+  website_url: https://prettier.io/
+  version: 2.6.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Code Review
+  image_url: https://img.stackshare.io/service/7035/default_66f265943abed56bcdbfca1c866a4261b1fbb063.jpg
+  detection_source_url: package.json
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-06-26 11:33:05.000000000 Z
+- name: npm
+  description: The package manager for JavaScript.
+  website_url: https://www.npmjs.com/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-03-18 10:58:29.000000000 Z
+- name: Moment.js
+  description: A JavaScript date library for parsing, validating, manipulating, and
+    formatting dates
+  website_url: http://momentjs.com/
+  version: 2.29.4
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Javascript Utilities & Libraries
+  image_url: https://img.stackshare.io/service/3643/Xrtdc94q_400x400.png
+  detection_source_url: package.json
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-03-18 10:58:29.000000000 Z
+- name: Zod
+  description: TypeScript-first schema validation
+  website_url: https://zod.dev/
+  open_source: false
+  hosted_saas: false
+  image_url: https://img.stackshare.io/service/48521/default_eea961e4c374e68a1c7eb5bbc9e4a39920890342.png
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-03-18 10:58:29.000000000 Z
+- name: "@types/cheerio"
+  description: TypeScript definitions for Cheerio
+  package_url: https://www.npmjs.com/@types/cheerio
+  version: 0.22.31
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17279/default_b2015e9577d171c4c3f12c3c8d253c01fe63ba8d.png
+  detection_source_url: package.json
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-08-04 21:05:59.000000000 Z
+- name: "@typescript-eslint/eslint-plugin"
+  description: TypeScript plugin for ESLint
+  package_url: https://www.npmjs.com/@typescript-eslint/eslint-plugin
+  version: 5.27.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15982/default_8b5680d4e916298d08363c291a0d6e34c07ceb15.png
+  detection_source_url: package.json
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-08-04 21:05:59.000000000 Z
+- name: "@typescript-eslint/parser"
+  description: An ESLint custom parser which leverages TypeScript ESTree
+  package_url: https://www.npmjs.com/@typescript-eslint/parser
+  version: 5.27.0
+  license: BSD-2-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15980/default_732016a20524708efe7a4c77497fe9bfeea19ba6.png
+  detection_source_url: package.json
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-08-04 21:05:59.000000000 Z
+- name: cheerio
+  description: Fast, flexible, and lean implementation of core jQuery
+  package_url: https://www.npmjs.com/cheerio
+  version: 1.0.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15949/default_54b691c123fc8979741e800e4dcd3936c0f3b246.png
+  detection_source_url: package.json
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-08-04 21:05:59.000000000 Z
+- name: eslint-config-prettier
+  description: Turns off all rules that are unnecessary or might conflict with Prettier
+  package_url: https://www.npmjs.com/eslint-config-prettier
+  version: 8.3.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15879/default_0b10af8ca19c215f781dc07442e75bdc831089d0.png
+  detection_source_url: package.json
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-06-26 11:33:05.000000000 Z
+- name: etag
+  description: Create simple HTTP ETags
+  package_url: https://www.npmjs.com/etag
+  version: 1.8.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17743/default_552addbbff67ec0ef62ce1d229e112d14ca818f5.png
+  detection_source_url: package.json
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-03-18 10:58:29.000000000 Z
+- name: events
+  description: Node's event emitter for all engines
+  package_url: https://www.npmjs.com/events
+  version: 3.3.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16435/default_aa91da3cee4d961f0eea8ca5de77f399ec7ec794.png
+  detection_source_url: package.json
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-03-30 06:14:15.000000000 Z
+- name: fs
+  description: This package name is not currently in use, but was formerly occupied
+    by another package
+  package_url: https://www.npmjs.com/fs
+  version: 0.0.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16098/default_63a34654baee757196ddff2457bd1c9a0dfb7287.png
+  detection_source_url: package.json
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-03-18 10:58:29.000000000 Z
+- name: moment
+  description: Parse, validate, manipulate, and display dates
+  package_url: https://www.npmjs.com/moment
+  version: 2.29.4
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15847/default_4479dbac220be99e50e724b2df6cf415241d71fd.png
+  detection_source_url: package.json
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-03-18 10:58:29.000000000 Z
+- name: nprogress
+  description: Simple slim progress bars
+  package_url: https://www.npmjs.com/nprogress
+  version: 0.2.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17061/default_23002b02644a8cb313a0f53f43df271731022a9e.png
+  detection_source_url: package.json
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-03-18 10:58:29.000000000 Z
+- name: path
+  description: Node.JS path module
+  package_url: https://www.npmjs.com/path
+  version: 0.12.7
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16082/default_924b66c04aa848a4028c1a5753a23dae0f835f86.png
+  detection_source_url: package.json
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-03-30 06:14:15.000000000 Z
+- name: postcss
+  description: Tool for transforming styles with JS plugins
+  package_url: https://www.npmjs.com/postcss
+  version: 8.4.18
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16012/default_7a88bebb451873cc63bd99007de5bd3bb8ef85de.png
+  detection_source_url: package.json
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-03-18 10:58:29.000000000 Z
+  vulnerabilities:
+  - name: PostCSS line return parsing error
+    cve_id: CVE-2023-44270
+    cve_url: https://github.com/advisories/GHSA-7fh5-64p2-3v2j
+    detected_date: Oct 4
+    severity: moderate
+    first_patched: 8.4.31
+- name: tailwindcss
+  description: A utility-first CSS framework for rapidly building custom user interfaces
+  package_url: https://www.npmjs.com/tailwindcss
+  version: 3.3.2
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17398/default_2cd7ed1c123f2fca074a6f4b16c4e73d5bfe82be.png
+  detection_source_url: package.json
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-05-01 01:44:00.000000000 Z
+- name: tslib
+  description: Runtime library for TypeScript helper functions
+  package_url: https://www.npmjs.com/tslib
+  version: 2.3.1
+  license: 0BSD
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15853/default_97d4687bd07ff1bb963fd566c84e7cbf7c73bbee.png
+  detection_source_url: package.json
+  detection_source: package.json
+  last_updated_by: Binsar Dwi Jasuma
+  last_updated_on: 2023-03-18 10:58:29.000000000 Z
